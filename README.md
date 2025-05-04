@@ -137,10 +137,10 @@ Notes about subject data
 
 [SubjectID]_E4_Data.zip
 Raw data from Empatica E4 wrist device
-Already included in .pkl, not needed
+Included in .pkl
 
 [SubjectID]_respiban.txt
 Raw chest sensor data
-Already included in .pkl, not needed
-Note: For most analyses, the .pkl and _quest.csv files are sufficient.
+Included in .pkl
+
 
