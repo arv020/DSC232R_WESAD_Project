@@ -69,32 +69,48 @@ Chest Sensor: ACC
 3-axis accelerometer (X, Y, Z)
 Captures body posture and motion
 Units likely in g (gravitational acceleration)
+
+
 Chest Sensor: ECG
 1D electrocardiogram signal
 Measures electrical heart activity (voltage)
 Useful for detecting heart rate variability (HRV), stress
+
+
 Chest Sensor: EMG
 Electromyography: records muscle tension/activity
 High values indicate movement or tension
 Useful for stress response analysis
+
+
 Chest Sensor: EDA
 Electrodermal Activity (skin conductance)
 Reflects sympathetic nervous system activity (stress/arousal)
 High EDA = increased stress
+
+
 Chest Sensor: Temp
 Skin temperature (in °C)
 Subtle changes may correlate with stress
+
+
 Chest Sensor: Resp
 Respiration signal (breathing pattern)
 Cyclical waveform with inhalation/exhalation
 Can extract breathing rate, variability
+
+
 Wrist Sensor: ACC
 3-axis accelerometer from wrist (noisier than chest)
 Captures wrist movement (e.g., fidgeting, gestures)
+
+
 Wrist Sensor: BVP
 Blood Volume Pulse
 Derived from optical sensors (like PPG)
 Used to estimate heart rate and HRV
+
+
 Wrist Sensor: EDA and Temp
 Redundant versions of chest EDA and Temp
 Can be used for cross-validation or fallback
