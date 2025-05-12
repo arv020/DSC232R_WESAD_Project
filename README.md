@@ -6,6 +6,10 @@ https://ubi29.informatik.uni-siegen.de/usi/data_wesad.html
 Wearable Stress and Affect Detection Dataset (17GB)
 The dataset is collected from a controlled lab study that focuses on classifying participants’ emotional states, specifically neutral, stress, and amusement, based on physiological and motion data ultimately collecting the WESAD (Wearable Stress and Affect Detection) dataset. Data is collected from both wrist and chest-worn devices with 15 subjects reported from both medical professionals as well as self reports from the subjects. The following sensor modalities included are: blood volume pulse, electrocardiogram, electrodermal activity, electromyogram, respiration, body temperature, and acceleration. With these sensors we are able to explore the important features and trends between the stress classifications of: baseline vs. stress vs. amusement, and compare both devices.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aadaaf788f4da527de33c1e3a75450aa80b90b1
 ## Data Exploration
 Citation: Philip Schmidt, Attila Reiss, Robert Duerichen, Claus Marberger and Kristof Van Laerhoven, "Introducing WESAD, a multimodal dataset for Wearable Stress and Affect Detection", ICMI 2018, Boulder, USA, 2018.
 The majority of our data is formatted as timeseries data with synchronization points captured by wearable chest and wrist sensors. The sensors were worn while participants were asked to do tasks to induce stress, amusement, meditation and a baseline was collected. For preprocessing we cosolidated the files into one dataframe per file type (pickle, csv etc.). Additionally, we removed some of the labels we did not need identified by the data structure to be undefined or unneccescary for processing. We visualized participant S2s data to gain and understanding of the distribution for the chest and wrist sensor data associated with the study. We evaluated the data to understand the structure of the files, the sensor descriptions and the number of observations and null values. Because of the nature of collection using body worn sensors, there is no missingness in sensor data. As part of our model building we intend to explore the connection between the self report surveys and the sensor data. See below for a higher level view of data:
@@ -142,5 +146,63 @@ Included in .pkl
 [SubjectID]_respiban.txt
 Raw chest sensor data
 Included in .pkl
+<<<<<<< HEAD
 
 
+## Self-Reporting Questionnaires Insights and Reformating
+The questionaires found as 'SX_quest.csv' were reformatted and organized into a single CSV. The motivation for this was to centralize these metrics and self responses for each subject in a single place. 
+
+
+**Response Scales**
+The following are response scales, and their interpretation according to the WESAD dataset. 
+
+* **PANAS** (24 items): 1 = Not at all, 2 = A little bit, 3 = Somewhat, 4 = Very much, 5 = Extremely
+
+* **STAI** (6 items): 1 = Not at all, 2 = Moderately so, 3 = Somewhat, 4 = Very much so
+
+* **SAM** (DIM (tag), 2 items: Valence & Arousal): 1 = Low (valence/arousal), 9 = High (valence/arousal)
+
+* **SSSQ** (6 items): 1 = Not al all, 2 = A little bit, 3 = Somewhat, 4 = Very much, 5 = Extremely
+
+**Self-Report Questionnaire Notes**
+
+* **PANAS, STAI, SAM** were administered after each of the four study conditions (Baseline, Stress, Amusement, Meditation), so every row has values for those 36 items (24+6+6).
+
+* **SSSQ** was administered only *once*, immediately after the **Stress** condition, so for Baseline, Amusement, and Meditation rows those six columns are intentionally empty (NA).
+
+**Condition Order & Tag Mapping**
+* Every'SX_quest.csv' contains a line:
+  
+    *'# ORDER;Base;TTST;Medi 1;Fun;Medi 2;...'*
+
+* We interpret the remap as:
+  
+| Raw Token | Condition Name | condition_id |
+|:---------:|:--------------:|:------------:|
+| Base      | Baseline       | 1            |
+| TSST      | Stress         | 2            |
+| Medi 1    | Meditation     | 4            |
+| Fun       | Amusement      | 3            |
+| Medi 2    |*(ignored)*     | -            |
+
+* We only keep the first four conditions (Baseline, Stress, Meditation, Amusement), and ignore anything from 'Medi 2' and beyond (including 'sRead', 'fRead').
+
+* Each questionnaire block is tagged:
+
+|          Tag          | Questionnaire                        |
+|:---------------------:|:------------------------------------:|
+| '# PANAS'             | PANAS (24 questions)                 |
+| '# STAI'              | STAI (6 questions)                   |
+| '# DIM'               | SAM (Valence & Arousal; 2 questions) |
+| '# SSSQ'              | SSSQ (6 questions; only after Stress)|
+
+
+
+
+
+* All responses are parsed, lowercased, and written to:
+  **all_questionnaires.csv**
+
+
+=======
+>>>>>>> 3aadaaf788f4da527de33c1e3a75450aa80b90b1
