@@ -13,7 +13,7 @@ We requested the following in our job submission:
 We used the following singularity image provided by professor for each job session for our singularity container: 
 '~/esolares/spark_py_latest_jupyter_dsc232r.sif '
 
-**Environment modules to be loaded:\n**
+**Environment modules to be loaded:**
 'singularitypro'
 
 **Working directory:**
