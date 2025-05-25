@@ -275,7 +275,10 @@ rf = RandomForestClassifier(
 )
 
 Again, we adjusted the class_weight to 'Balanced' to ensure our data is proportionateand we chose a max_depth at 20, because it was the most reasonable. We used a min_samples_leaf of 3 to help regularize the model and reducing overfit.
-As discussed in the conclusion, removing the PANAS questionnaire improved model generalization and reduced overfitting.
+As discussed in the conclusion, removing the PANAS questionnaire improved some model generalization and reduced overfitting.
+
+Attached below is a plot of our learning curve, which clearly shows we are overfitting as our validation curve is low signifying its not generalizing well to new data. We hope to continue working through this as explained in our next steps section. 
+<img width="839" alt="image" src="https://github.com/user-attachments/assets/ba52f0b7-c2ea-4b68-8130-794f79dfe2ff" />
 
 
 
@@ -303,7 +306,7 @@ For our second RandomFortest Model which does NOT include the PANAS dataset and 
 <b>Validation Accuracy: </b> 0.6696361824071767
 <b>Test Accuracy: </b> 0.6746511338151009
 
-When the PANAS dataset was included our model was training perfectly, a big sign of overfitting and data leakage. When removing the dataset and only including the WRIST/CHEST device data, our model was fitting the training data well, but with a slight performance gap between the training and testing accuracy, which means there is some level of overfitting. Our performance at 0.67 is an improvement, and does show some reasonable generalization. 
+When the PANAS dataset was included our model was training perfectly, a big sign of overfitting and data leakage. When removing the dataset and only including the WRIST/CHEST device data, our model was fitting the training data well, but with a slight performance gap between the training and testing accuracy, which means there is some level of overfitting. Our performance at 0.67 is an improvement, and does show some  generalization. 
 
 We evaluated its performance on the test set and generated a classification report for deeper insight. It shows that label 1 has the highest precision and recall around 73% - 75%. In comparison to label 3 which is the weakest performer ~51% . Both label 2 and 4 are balanced but can improve. The confusion matrix shows that instances correclty and incorrectly classified, showing that misclassifications were more common between adjacent and similar classes. 
 
@@ -316,14 +319,14 @@ Classification Report (Test):
            4       0.67      0.70      0.68      8385
 
     accuracy                           0.67     32104
-   macro avg       0.64      0.64      0.64     32104
-weighted avg       0.68      0.67      0.67     32104
+``` macro avg       0.64      0.64      0.64     32104``` 
+<br>```weighted avg       0.68      0.67      0.67     32104``` </br>
 
 Confusion Matrix (Test):
-[[9196 1257  885 1268]
- [1111 4571  459  988]
- [ 857  433 2021  673]
-[1145  734  635 5871]]
+<br>[[9196 1257  885 1268]</br>
+ <br>[1111 4571  459  988] </br>
+ <br>[ 857  433 2021  673]</br>
+<br>[1145  734  635 5871]]</br>
 
 Removing PANAS dataset reduced overfitting and improved generaizability, while the model performs decently label 3 remains challening, and there is lots of room for refinement, feature engineering, balancing trainign data and using a variety of techniques mentioned in our next steps. 
  
