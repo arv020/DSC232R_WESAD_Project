@@ -14,12 +14,15 @@ We used the following singularity image provided by professor for each job sessi
 '~/esolares/spark_py_latest_jupyter_dsc232r.sif '
 
 **Environment modules to be loaded:**
+
 'singularitypro'
 
 **Working directory:**
+
 'home'
 
 **Type:**
+
 'jupyterLab'
 
 
