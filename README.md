@@ -9,18 +9,19 @@ To set-up our SDSC Jupyter Job and environment we used the following configurati
 We requested the following in our job submission:
 1. Number of cores: 50
 2. Memory per node: 25 GB
+3. Working Directory: Home Directory 
    
 We used the following singularity image provided by professor for each job session for our singularity container: 
-'~/esolares/spark_py_latest_jupyter_dsc232r.sif '
+```~/esolares/spark_py_latest_jupyter_dsc232r.sif ```
 
 To retrieve the WESAD data we retrieved a zipped version of the file found here: 
 <br>'https://uni-siegen.sciebo.de/s/HGdUkoNlW1Ub0Gx/download' </br>
 
 We used the following command and put it in our home directory 
-'wget https://uni-siegen.sciebo.de/s/HGdUkoNlW1Ub0Gx/download . '
+<br>```wget https://uni-siegen.sciebo.de/s/HGdUkoNlW1Ub0Gx/download . ``` </br>
 
 Once retrieving we unzipped the data as it comes in a zipped format 
-'unzip download '
+<br>```unzip download ``` </br>
 
 ## Abstract
 Wearable Stress and Affect Detection Dataset (17GB)
@@ -218,6 +219,104 @@ The following are response scales, and their interpretation according to the WES
 
 * All responses are parsed, lowercased, and written to:
   **all_questionnaires.csv**
+
+## Model Building 
+
+The model we decided to use in Milestone 3 was a Random Forest Classifier, as it handles high dimensional and noisy data. We have 2 attempts in our notebook: 1st attempt with a dataframe that includes the self report PANAS questionnaire, and a 2nd attempt with only sensor data.
+
+<u>Pre-processing step: </u>
+We began by organizing the data needed for modeling. All .pkl files were grouped by modality—chest (ECG, EMG, EDA, Temp, Resp, ACC) and wrist (BVP, EDA, Temp, ACC)—with each modality stored in its own table. These were then exported as CSVs and stored in a folder named combined_pkl_csv for streamlined access in the next steps.
+
+To reduce noise and prepare the data for time-series modeling, we chunked each signal into segments of 1,000 data points. For each chunk, we computed summary statistics (e.g., mean, std, min, max), transforming raw signals into interpretable features for the model.
+
+The target variable represents four emotional states:
+1: Baseline, 2: Stress, 3: Amusement, and 4: Meditation.
+
+All processed chunks across subjects and modalities were then merged into a single DataFrame named final_df. From here, we proceeded with two distinct preprocessing and modeling approaches.
+
+<b><u>1st attempt:Sensor Data + PANAS </u> </b>
+To complete the pre-processing, we added the PANAS self-report questionnaire to the final_df and dropped any columns with a significant amount of null values. 
+
+The parameters we used for our RandomForestClassifier are the following: 
+
+rf = RandomForestClassifier(
+    n_estimators=75,
+    random_state=45,
+    class_weight='balanced',
+    max_depth=10,
+    min_samples_leaf=5
+)
+We adjusted the class_weight to 'Balanced' to ensure our data is proportionate and ensuring underrepresetned classes arent ignored. We chose a max_depth at 10, as when testing out a vartiety of max_depth, 10 was the most reasonable depth. We used a min_samples_leaf of 5 to help regularize the model and reducing overfit. 
+
+We used GroupShuffleSplit to split our data while preserving subject-level groupings. However, despite this, we observed overfitting: the model achieved 100% accuracy on the test set. We suspect this is due to data leakage from the PANAS features, which may allow the model to "memorize" outcomes due to the limited number of questionnaire responses relative to the sensor data.
+
+We also explored feature importance using a correlation bar plot, which gave us insights for future modeling directions.
+
+<b><u>2nd attempt: Sensor Data Only </u> </b>
+To complete the pre-processing, we only combined the pkl file time chunks to give us the following shape: (160518, 13) and the following columns: Index(['chunk_id', 'subject', 'modality', 'label', 'mean', 'std', 'min', 'max', 'range', 'skewness', 'iqr', 'mode', 'median'], dtype='object'). We took a look at some summary statistics and made sure that we had no missing values.
+
+The parameters we used for our RandomForestClassifier are the following: 
+rf = RandomForestClassifier(
+    n_estimators=100, 
+    random_state=45, 
+    class_weight='balanced',
+    max_depth=20, 
+    min_samples_leaf=3
+)
+
+Again, we adjusted the class_weight to 'Balanced' to ensure our data is proportionateand we chose a max_depth at 20, because it was the most reasonable. We used a min_samples_leaf of 3 to help regularize the model and reducing overfit.
+As discussed in the conclusion, removing the PANAS questionnaire improved model generalization and reduced overfitting.
+
+
+
+## Next Steps 
+For our next Milestone we aim to further improve our model's accruacy through the following steps:
+
+* The first thing we will do to further improve our results, is to enhance our current Random Forest model by exploring additional features and incorporating written survey data, which were not included in the current model. By expanding the feature set, we aim to boost model performance. 
+
+* In addition to improving our baseline, we plan to experiment with different modeling appraches, including gradient (e.g. XGBoost, LightGBM) and support vector machines. By comparing these methods, we hope to identify the approach that yields the msot accurate and reliable results for out dataset, along with finding the most important features that predict our four labels. 
+
+* Moreover, we are currently segmenting the time series sensor data into events of 1000 consecutive readings. However, the best chunk size for optimal model performance will continue being explored in the future milestone as we continue adding different data to our segment.
+
+* As for another approach since our current classification model involves predicting all four label states (Baseline, Stress, Amusement, Meditation). However, this multi-class approach may compromise performance if some states are difficult to distinguish. As a next step, we will explore alternative strategies, such as binary classification (e.g., Stress vs. No Stress), to assess whether simplifying the task can achieve greater accuracy and reliability in our models.
+
+
+
+## Conclusion 
+For our First RandomForest Model which includes the PANAS dataset our results consist of the following: 
+<b>Training Accuracy:</b> 1.0
+<b>Validation Accuracy:</b> 0.46539238539238537
+<b>Test Accuracy:</b> 0.6128201947528376
+
+For our second RandomFortest Model which does NOT include the PANAS dataset and only the time series data, our results consist of the following: 
+<b>Training Accuracy: </b>0.869951199252414
+<b>Validation Accuracy: </b> 0.6696361824071767
+<b>Test Accuracy: </b> 0.6746511338151009
+
+When the PANAS dataset was included our model was training perfectly, a big sign of overfitting and data leakage. When removing the dataset and only including the WRIST/CHEST device data, our model was fitting the training data well, but with a slight performance gap between the training and testing accuracy, which means there is some level of overfitting. Our performance at 0.67 is an improvement, and does show some reasonable generalization. 
+
+We evaluated its performance on the test set and generated a classification report for deeper insight. It shows that label 1 has the highest precision and recall around 73% - 75%. In comparison to label 3 which is the weakest performer ~51% . Both label 2 and 4 are balanced but can improve. The confusion matrix shows that instances correclty and incorrectly classified, showing that misclassifications were more common between adjacent and similar classes. 
+
+Classification Report (Test):
+              precision    recall  f1-score   support
+
+           1       0.75      0.73      0.74     12606
+           2       0.65      0.64      0.65      7129
+           3       0.51      0.51      0.51      3984
+           4       0.67      0.70      0.68      8385
+
+    accuracy                           0.67     32104
+   macro avg       0.64      0.64      0.64     32104
+weighted avg       0.68      0.67      0.67     32104
+
+Confusion Matrix (Test):
+[[9196 1257  885 1268]
+ [1111 4571  459  988]
+ [ 857  433 2021  673]
+[1145  734  635 5871]]
+
+Removing PANAS dataset reduced overfitting and improved generaizability, while the model performs decently label 3 remains challening, and there is lots of room for refinement, feature engineering, balancing trainign data and using a variety of techniques mentioned in our next steps. 
+ 
 
 
 
