@@ -13,6 +13,16 @@ We requested the following in our job submission:
 We used the following singularity image provided by professor for each job session for our singularity container: 
 '~/esolares/spark_py_latest_jupyter_dsc232r.sif '
 
+**Environment modules to be loaded:**
+'singularitypro'
+
+**Working directory:**
+'home'
+
+**Type:**
+'jupyterLab'
+
+
 To retrieve the WESAD data we retrieved a zipped version of the file found here: 
 <br>'https://uni-siegen.sciebo.de/s/HGdUkoNlW1Ub0Gx/download' </br>
 
