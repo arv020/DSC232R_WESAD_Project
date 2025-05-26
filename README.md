@@ -291,7 +291,7 @@ For our next Milestone we aim to further improve our model's accruacy through th
 
 * Moreover, we are currently segmenting the time series sensor data into events of 1000 consecutive readings. However, the best chunk size for optimal model performance will continue being explored in the future milestone as we continue adding different data to our segment.
 
-* As for another approach since our current classification model involves predicting all four label states (Baseline, Stress, Amusement, Meditation). However, this multi-class approach may compromise performance if some states are difficult to distinguish. As a next step, we will explore alternative strategies, such as binary classification (e.g., Stress vs. No Stress), to assess whether simplifying the task can achieve greater accuracy and reliability in our models.
+* As for another approach since our current classification model involves predicting all four label states (Baseline, Stress, Amusement, Meditation), we will explore alternative strategies, such as binary classification (e.g., Stress vs. No Stress), to assess whether simplifying the task can achieve greater accuracy and reliability in our models. The reason being, that this multi-class approach may be what is compromising the model's performance if some states are difficult to distinguish. 
 
 
 
