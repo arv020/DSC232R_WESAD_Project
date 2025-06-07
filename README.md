@@ -240,6 +240,11 @@ The following plots display raw physiological signals collected from the chest- 
 ![Image](https://github.com/user-attachments/assets/8469697e-904d-4508-9c2e-a2d859196f79)
 <br>**Figure 9.** Wrist accelerometer (ACC) signal across emotional states.  </br>
 
+**Visual exploration figures of Self Report Visuals:**
+
+![Screenshot 2025-06-06 at 6 59 31 PM](https://github.com/user-attachments/assets/a58cd198-8a8f-4a42-b073-1197d104bed8)
+
+
 
 ### Preprocessing
 The raw time series data and questionnaire responses were systematically preprocessed to prepare for modeling.
