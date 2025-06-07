@@ -243,7 +243,22 @@ The following plots display raw physiological signals collected from the chest- 
 **Visual exploration figures of Self Report Visuals:**
 
 ![Screenshot 2025-06-06 at 6 59 31 PM](https://github.com/user-attachments/assets/a58cd198-8a8f-4a42-b073-1197d104bed8)
+<br> </br>
 
+![Screenshot 2025-06-06 at 6 59 53 PM](https://github.com/user-attachments/assets/f4e093b5-303e-4b01-9569-a4bdab9278fc)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 03 06 PM](https://github.com/user-attachments/assets/86b8fe38-9c9a-42ad-9ca3-426d17afbc48)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 03 23 PM](https://github.com/user-attachments/assets/d96dee94-d296-471f-8916-4a856587c6d5)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 04 01 PM](https://github.com/user-attachments/assets/77efe4fe-b5f7-4dd8-97ee-9db3a3c79e66)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 04 17 PM](https://github.com/user-attachments/assets/89ccf152-5cf4-4a70-af42-1542e8fbcbd9)
+<br> </br>
 
 
 ### Preprocessing
