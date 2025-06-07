@@ -386,7 +386,7 @@ Classification Report (Test Set):
 
 The final model selected was a Random Forest classifier trained on the dataset including the Sensor, Survey, and Questionnaire (PANAS) data for multiclass affective state classification (labels 1-4). It achieved the strongest test accuracy (within multiclass classification: 0.78), and robust performance across all the classes, with especially high recall for class 1. Feature importance analysis highlighted the value of aggregate sensor statistics and select questionnaire responses. These results indicate that a combination of physiological, questionnaires and self-report data enables effective multiclass label detection
 
-### <u>**Discussion**</u>
+## <u>**Discussion** </u>
 
 Our analysis of the WESAD dataset was driven by the goal of building interpretable, generalizable models capable of detecting human physiological and emotional states defined by wearable sensor data and an extensive self-report battery. With this dataset we were able to leverage a well-documented multimodal dataset that captured real-world physiological signals in a controlled laboratory setting. 
 
@@ -397,6 +397,7 @@ The label distribution, although not perfectly distributed, was sufficient to tr
 During our preprocessing phase, we opted to chunking the time-series data into event spaces consisting of 1000 consecutive sample segments. We determined that the volume of information from each sensor, using one singular timepoint, would not yield enough information to make a solid prediction so we had to create event spaces that were more representative of each physiological state. We also computed summary statistics which reshaped the data into a tabular format more well-suited for our machine learning model. Although these choices made a more digestible model, it is likely that we lost some of the more fine-grained temporal patterns by doing so. During this phase we also excluded ambiguous and undefined labels and focused on building our models on the 4 classes: Baseline, Stress, Amusement and Meditation.
 
 **Model 1: Sensor Data + PANAS**
+
 The integration of self-reported PANAS questionnaire data into Model 1 provided a valuable contrast to the sensor-only model. This model provided guidance but was not an effective framework for predicting labels. Our first iteration included all sensor summary statistics and self-report data. Unsurprisingly, this led to a gross overfitting of the model with a 100% training accuracy. Through thorough evaluation, we found that the questionnaires themselves joined upon the sensors allowed the model to predict with certainty which state each participant was in. 
 
 To reform the model for overfitting we trimmed down feature selection to only include PANAS variables that were highly correlated with the predicting label outputs, regarding NaN values and shuffling data to reduce predictability. Although this resolved the overfitting issue, the model performed poorly (likely due to loss of data granularity) and we navigated to a different approach that explored 
