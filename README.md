@@ -35,10 +35,13 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 We requested the following in our job submission:
 
-<br>Number of cores: 50</br>
-<br>Memory per node: 25 GB</br>
-<br>Working Directory: Home Directory</br>
-<br>We used the following singularity image provided by professor for each job session for our singularity container: ~/esolares/spark_py_latest_jupyter_dsc232r.sif </br>
+Number of cores: 50
+
+Memory per node: 25 GB
+
+Working Directory: Home Directory
+
+We used the following singularity image provided by professor for each job session for our singularity container: ~/esolares/spark_py_latest_jupyter_dsc232r.sif
 
 Environment modules to be loaded: 'singularitypro'
 
