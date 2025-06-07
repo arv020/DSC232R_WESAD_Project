@@ -94,6 +94,7 @@ The PANAS features were merged with the final_df. Columns with significant missi
 
 
 
+
 **Model Building: Model 2 - Random Forest Classifier (Sensor Data Only)**
 <br>Model 2 uses a Random Forest Classifier from the sklearn.ensemble module, which is appropriate for handling high dimensionality and noisy datasets. The goal of this model is to predict the label 1, 2, 3 or 4 of each sample and output a predicted class for each sample, allowing us to identify patterns in the features and distinguish the strongest feature statistic that predicts a label.  </br>
 
