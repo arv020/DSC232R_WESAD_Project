@@ -242,56 +242,58 @@ The following plots display raw physiological signals collected from the chest- 
 
 **Visual exploration figures of Self Report Visuals:**
 
-![Screenshot 2025-06-06 at 6 59 31 PM](https://github.com/user-attachments/assets/a58cd198-8a8f-4a42-b073-1197d104bed8)
-<br> </br>
+**Visual exploration figures of Self Report Visuals:**
 
-![Screenshot 2025-06-06 at 6 59 53 PM](https://github.com/user-attachments/assets/f4e093b5-303e-4b01-9569-a4bdab9278fc)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/a58cd198-8a8f-4a42-b073-1197d104bed8" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 03 06 PM](https://github.com/user-attachments/assets/86b8fe38-9c9a-42ad-9ca3-426d17afbc48)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/f4e093b5-303e-4b01-9569-a4bdab9278fc" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 03 23 PM](https://github.com/user-attachments/assets/d96dee94-d296-471f-8916-4a856587c6d5)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/86b8fe38-9c9a-42ad-9ca3-426d17afbc48" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 04 01 PM](https://github.com/user-attachments/assets/77efe4fe-b5f7-4dd8-97ee-9db3a3c79e66)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/d96dee94-d296-471f-8916-4a856587c6d5" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 04 17 PM](https://github.com/user-attachments/assets/89ccf152-5cf4-4a70-af42-1542e8fbcbd9)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/77efe4fe-b5f7-4dd8-97ee-9db3a3c79e66" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 04 48 PM](https://github.com/user-attachments/assets/8625a77f-36f8-4643-95dd-da10f013a081)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/89ccf152-5cf4-4a70-af42-1542e8fbcbd9" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 04 59 PM](https://github.com/user-attachments/assets/5ad2b661-306a-4867-838d-bfcccbab6490)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/8625a77f-36f8-4643-95dd-da10f013a081" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 05 22 PM](https://github.com/user-attachments/assets/82653b36-390a-4cc9-a23f-308cbb5049f3)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/5ad2b661-306a-4867-838d-bfcccbab6490" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 05 32 PM](https://github.com/user-attachments/assets/d87ffc0b-594a-49ba-a9d8-13c9d933e5c6)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/82653b36-390a-4cc9-a23f-308cbb5049f3" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 05 50 PM](https://github.com/user-attachments/assets/33f28c57-6d93-40af-b4bb-2d7704fc5033)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/d87ffc0b-594a-49ba-a9d8-13c9d933e5c6" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 06 03 PM](https://github.com/user-attachments/assets/98ff2f29-425d-46be-9980-30e06aaea9a9)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/33f28c57-6d93-40af-b4bb-2d7704fc5033" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 06 34 PM](https://github.com/user-attachments/assets/224f53b7-225b-451b-9e10-5e46d41ad73b)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/98ff2f29-425d-46be-9980-30e06aaea9a9" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 06 52 PM](https://github.com/user-attachments/assets/4099daf2-fb47-487b-9dc7-a9fa6764b948)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/224f53b7-225b-451b-9e10-5e46d41ad73b" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 07 03 PM](https://github.com/user-attachments/assets/dc185f2a-6c6a-4922-b605-0fb0d78fc41e)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/4099daf2-fb47-487b-9dc7-a9fa6764b948" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 07 28 PM](https://github.com/user-attachments/assets/bb1b2d17-8c81-40aa-ac89-c56c7bf6595d)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/dc185f2a-6c6a-4922-b605-0fb0d78fc41e" width="600"/>
+<br><br>
 
-![Screenshot 2025-06-06 at 7 07 37 PM](https://github.com/user-attachments/assets/19338923-ac17-44ee-85ea-b53d20f22e9d)
-<br> </br>
+<img src="https://github.com/user-attachments/assets/bb1b2d17-8c81-40aa-ac89-c56c7bf6595d" width="600"/>
+<br><br>
+
+<img src="https://github.com/user-attachments/assets/19338923-ac17-44ee-85ea-b53d20f22e9d" width="600"/>
+<br><br>
 
 
 ### Preprocessing
