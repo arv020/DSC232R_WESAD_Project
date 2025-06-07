@@ -440,7 +440,7 @@ Class Imbalance: Although moderate, class imbalance likely impacted classifier s
 Model Constraints: We focused on Random Forests due to their interpretability and robustness, but more specialized time-series models might better capture complex temporal dependencies.
 
 
-### <u>**Conclusion**</u>
+## <u>**Conclusion** </u>
 
 One of the most rewarding aspects of this project was the interdisciplinary lens through which we approached physiological state detection. Integrating knowledge from psychology, physiology, and machine learning gave us a more nuanced understanding of how emotion manifests in sensor data. By interpreting sensor data through a biopsychological framework, we translated data grounded in human experience, an area we are all passionate about exploring.
 
@@ -461,7 +461,10 @@ Explore additional algorithms: Beyond the models discussed in class, we would li
 
 Reconsider data preprocessing strategy: Instead of chunking, using individual data points could increase the number of training examples and potentially improve generalization.
 While our final model integrated many of the features proposed in Milestone 3, the feature engineering process was inherently iterative, and there are still many promising directions to pursue.
-**Statement of Collaboration**
+
+
+## <u>**Statement of Collaboration** </u>
+
 Our team collaborated very equally and worked very well together by leaning on one another. The entire team worked well on managing deadlines and we shared planning for meetings/scheduling. We met over 10+ times over the course of this quarter as a team to meet our deadlines and make significant intellectual contributions. With that said we each contributed as follows:
 
 Ingrid Altamirano: Developer, Contribution: Git Integration and general environment setup, Model 2 build and exploration, ReadMe Writing
