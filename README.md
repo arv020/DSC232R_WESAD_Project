@@ -198,7 +198,7 @@ rf.fit(X_train, y_train)
 
 ## <u> Results </u>
 
-###Data Exploration
+### Data Exploration
 
 Our raw data exploration showed us that each subject has ~2–3 million time points. The total labeled observations across the dataset: 60,807,600. No missing data was observed in any sensor modality. Participant sample size consisted of n = 15 subjects (S2 to S17, excluding S12).
 
