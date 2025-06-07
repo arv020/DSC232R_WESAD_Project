@@ -301,7 +301,7 @@ A Random Forest classifier was trained for binary stress classification as descr
 Classification Report (Test Set):
 ![Image](https://github.com/user-attachments/assets/53f04f05-9aeb-47e3-9ff0-3ad4cde80e6a)
 
-**Figure 14.** Sensor + Survey Data (Binary Classification) Performance Scores (Test Data) 
+**Figure 14.** Sensor + Survey Data (Binary Classification) Confusion Matrix (Test Data) 
 
 ![Image](https://github.com/user-attachments/assets/86aff9e9-0ff9-426c-9372-57faa96eb5ba)
 
