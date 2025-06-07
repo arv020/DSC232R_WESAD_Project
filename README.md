@@ -242,8 +242,6 @@ The following plots display raw physiological signals collected from the chest- 
 
 **Visual exploration figures of Self Report Visuals:**
 
-**Visual exploration figures of Self Report Visuals:**
-
 <img src="https://github.com/user-attachments/assets/a58cd198-8a8f-4a42-b073-1197d104bed8" width="600"/>
 <br><br>
 
