@@ -31,7 +31,7 @@ The following sensor modalities are included (worn either via chest or wrist): b
 **Environment set up instructions**
 <br>To set-up our SDSC Jupyter Job and environment we used the following configurations and steps:</br>
 
-**Compute Resources**
+**Compute Resources:**
 
 We requested the following in our job submission:
 
@@ -49,7 +49,7 @@ Working directory: 'home'
 
 Type: 'jupyterLab'
 
-**Data Retrieval**
+**Data Retrieval:**
 1) To retrieve the WESAD data we retrieved a zipped version of the file found here:
 <br> <u>https://uni-siegen.sciebo.de/s/HGdUkoNlW1Ub0Gx/download </u></br>
 
@@ -68,6 +68,7 @@ As part of our model building we intend to explore the connection between the se
 
 
 **Preprocessing:**
+
 Signal Aggregation and Chunking: We grouped .pkl data by modality (e.g., ECG, EMG, EDA, TEMP) and exported them as CSVs. Each signal was segmented into chunks of 1,000 consecutive readings. For every chunk, we computed summary statistics: mean, std, min, max, mode, median. These transformed time-series data into tabular features.
 Feature Consolidation: Each subject’s processed signal chunks were combined into a unified DataFrame named final_df. Each row corresponded to a chunk.
 Label Filtering: Labels outside the main study conditions (i.e., 0, 5, 6, 7) were excluded. Only chunks labeled with 1 (Baseline), 2 (Stress), 3 (Amusement), or 4 (Meditation) were retained.
