@@ -32,7 +32,9 @@ The following sensor modalities are included (worn either via chest or wrist): b
 <br>To set-up our SDSC Jupyter Job and environment we used the following configurations and steps:</br>
 
 **Compute Resources**
+
 We requested the following in our job submission:
+
 <br>Number of cores: 50</br>
 <br>Memory per node: 25 GB</br>
 <br>Working Directory: Home Directory</br>
