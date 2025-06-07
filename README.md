@@ -260,6 +260,39 @@ The following plots display raw physiological signals collected from the chest- 
 ![Screenshot 2025-06-06 at 7 04 17 PM](https://github.com/user-attachments/assets/89ccf152-5cf4-4a70-af42-1542e8fbcbd9)
 <br> </br>
 
+![Screenshot 2025-06-06 at 7 04 48 PM](https://github.com/user-attachments/assets/8625a77f-36f8-4643-95dd-da10f013a081)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 04 59 PM](https://github.com/user-attachments/assets/5ad2b661-306a-4867-838d-bfcccbab6490)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 05 22 PM](https://github.com/user-attachments/assets/82653b36-390a-4cc9-a23f-308cbb5049f3)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 05 32 PM](https://github.com/user-attachments/assets/d87ffc0b-594a-49ba-a9d8-13c9d933e5c6)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 05 50 PM](https://github.com/user-attachments/assets/33f28c57-6d93-40af-b4bb-2d7704fc5033)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 06 03 PM](https://github.com/user-attachments/assets/98ff2f29-425d-46be-9980-30e06aaea9a9)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 06 34 PM](https://github.com/user-attachments/assets/224f53b7-225b-451b-9e10-5e46d41ad73b)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 06 52 PM](https://github.com/user-attachments/assets/4099daf2-fb47-487b-9dc7-a9fa6764b948)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 07 03 PM](https://github.com/user-attachments/assets/dc185f2a-6c6a-4922-b605-0fb0d78fc41e)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 07 28 PM](https://github.com/user-attachments/assets/bb1b2d17-8c81-40aa-ac89-c56c7bf6595d)
+<br> </br>
+
+![Screenshot 2025-06-06 at 7 07 37 PM](https://github.com/user-attachments/assets/19338923-ac17-44ee-85ea-b53d20f22e9d)
+<br> </br>
+
 
 ### Preprocessing
 The raw time series data and questionnaire responses were systematically preprocessed to prepare for modeling.
