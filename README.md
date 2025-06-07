@@ -70,7 +70,9 @@ As part of our model building we intend to explore the connection between the se
 **Preprocessing:**
 
 Signal Aggregation and Chunking: We grouped .pkl data by modality (e.g., ECG, EMG, EDA, TEMP) and exported them as CSVs. Each signal was segmented into chunks of 1,000 consecutive readings. For every chunk, we computed summary statistics: mean, std, min, max, mode, median. These transformed time-series data into tabular features.
+
 Feature Consolidation: Each subject’s processed signal chunks were combined into a unified DataFrame named final_df. Each row corresponded to a chunk.
+
 Label Filtering: Labels outside the main study conditions (i.e., 0, 5, 6, 7) were excluded. Only chunks labeled with 1 (Baseline), 2 (Stress), 3 (Amusement), or 4 (Meditation) were retained.
 Train-Test Splitting: To preserve subject-level independence, we used GroupShuffleSplit with subject IDs as groups for model 1. The data was split into training, validation, and test sets.
 
@@ -396,12 +398,14 @@ During our preprocessing phase, we opted to chunking the time-series data into e
 
 **Model 1: Sensor Data + PANAS**
 The integration of self-reported PANAS questionnaire data into Model 1 provided a valuable contrast to the sensor-only model. This model provided guidance but was not an effective framework for predicting labels. Our first iteration included all sensor summary statistics and self-report data. Unsurprisingly, this led to a gross overfitting of the model with a 100% training accuracy. Through thorough evaluation, we found that the questionnaires themselves joined upon the sensors allowed the model to predict with certainty which state each participant was in. 
+
 To reform the model for overfitting we trimmed down feature selection to only include PANAS variables that were highly correlated with the predicting label outputs, regarding NaN values and shuffling data to reduce predictability. Although this resolved the overfitting issue, the model performed poorly (likely due to loss of data granularity) and we navigated to a different approach that explored 
 
 
 **Model 2: Sensor Data Only**
 
 Model 2 demonstrated that wearable sensor data alone can successfully distinguish between emotional states, supporting the broader goal of passive stress detection through wearable technology. The higher max depth and greater number of estimators improved the model’s ability to capture nonlinear relationships between sensor statistics and affective labels. However, model performance may still be hindered by overlapping features between Stress and Amusement, both of which can involve heightened arousal, and by inter-individual variability.
+
 The confusion matrix for Model 2 highlighted this challenge, as some emotional states, especially Stress vs. Amusement, were occasionally misclassified. This points to the nuanced nature of physiological responses: similar arousal levels can emerge from both positive and negative stimuli, complicating label boundaries. In future iterations we think investigating other models beyond what we have learned in our coursework could be used to process time-series specific data.
 
 ![Image](https://github.com/user-attachments/assets/835cf4a7-6fcb-4363-b0a9-37c8431d3781)
@@ -409,6 +413,7 @@ Figure X: Shows how statistics such as the mean and median and std were the most
 
 **Model 3: Sensor Data + Survey Data**
 <br>Model 3 tries a different multiclass classification by incorporating sensor data and the survey data (NOT PANAS). These questions include variables such as age, gender, health behaviors and lifestyle factors. We wanted to see if these context-specific variables could improve the performance of our models 
+
 Model 3 outperformed Model 1 and 2 in labeling the four emotional states. Feature importance showed that both sensor statistics and survey contributed to these results. However, there is overfitting with training being over 91%. Dropping features with almost zero importance improved the model generalization by a little bit.</br>
 
 **Model 4: Sensor Data + Survey Data (Binary Classification)**
