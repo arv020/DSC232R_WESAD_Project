@@ -33,7 +33,6 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 **Compute Resources:**
 <br>We requested the following in our job submission: </br>
-
 <br>Number of cores: 50</br>
 <br>Memory per node: 25 GB</br>
 <br>Working Directory: Home Directory</br>
