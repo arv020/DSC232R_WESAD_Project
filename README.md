@@ -238,7 +238,7 @@ The following plots display raw physiological signals collected from the chest- 
 <br>**Figure 8.** Chest respiration signal across emotional states.  </br>
 
 ![Image](https://github.com/user-attachments/assets/8469697e-904d-4508-9c2e-a2d859196f79)
-<br>**Figure 9.**Wrist accelerometer (ACC) signal across emotional states.  </br>
+<br>**Figure 9.** Wrist accelerometer (ACC) signal across emotional states.  </br>
 
 
 ### Preprocessing
