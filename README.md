@@ -92,7 +92,7 @@ In parallel, survey data for each subject was extracted from individual ‘_read
 </br>
 The PANAS features were merged with the final_df. Columns with significant missing values were dropped. A GroupShuffleSplit was applied for training and evaluation. The goal of our models is to predict the label 1, 2, 3 or 4.
 
-<br>
+<br></br>
 
 
 **Model Building: Model 2 - Random Forest Classifier (Sensor Data Only)**
