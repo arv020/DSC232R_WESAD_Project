@@ -17,10 +17,9 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 **Figure 1.** Distribution of labeled emotional states in the processed WESAD dataset. Each count corresponds to a 1,000-sample signal chunk, highlighting a moderate class imbalance with fewer examples of Amusement and Stress compared to Baseline.
 
-### XGBoost Confusion Matrix
-
 ![XGBoost Confusion Matrix](figures/xgboost_confusion_matrix.png)
 
+**Figure 2.** Confusion Matrix Model 6sdfsdf
 
 ![Image](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
 
@@ -33,7 +32,7 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 ## <u>Methods </u>
 
-**Environment set up instructions**
+### Environment Set-Up
 <br>To set-up our SDSC Jupyter Job and environment we used the following configurations and steps:</br>
 
 **Compute Resources:**
@@ -54,7 +53,8 @@ Working directory: 'home'
 
 Type: 'jupyterLab'
 
-**Data Retrieval:**
+### Data Retrieval
+
 1) To retrieve the WESAD data we retrieved a zipped version of the file found here:
 <br> <u>https://uni-siegen.sciebo.de/s/HGdUkoNlW1Ub0Gx/download </u></br>
 
@@ -64,7 +64,7 @@ Type: 'jupyterLab'
 3) Once retrieving we unzipped the data as it comes in a zipped format
 <br> ` unzip download ` </br>
 
-**Data Exploration:**
+### Data Exploration
 
 The majority of our data is formatted as time series data with synchronization points captured by wearable chest and wrist sensors. The sensors were worn while participants were asked to do tasks to induce stress, amusement, meditation and a baseline was collected. For preprocessing we consolidated self-report questionnaires into one dataframe and assessed sensor data separately by subject. Additionally, we removed some of the labels we did not need identified by the data structure to be undefined or unnecessary for processing. 
 
@@ -72,18 +72,19 @@ We visualized participant S2s data to gain an understanding of the distribution 
 As part of our model building we intend to explore the connection between the self report surveys and the sensor data. See below in ‘results’ for a higher level view of data.
 
 
-**Preprocessing:**
+### Preprocessing
 
-Signal Aggregation and Chunking: We grouped .pkl data by modality (e.g., ECG, EMG, EDA, TEMP) and exported them as CSVs. Each signal was segmented into chunks of 1,000 consecutive readings. For every chunk, we computed summary statistics: mean, std, min, max, mode, median. These transformed time-series data into tabular features.
+- **Signal Aggregation and Chunking:** We grouped .pkl data by modality (e.g., ECG, EMG, EDA, TEMP) and exported them as CSVs. Each signal was segmented into chunks of 1,000 consecutive readings. For every chunk, we computed summary statistics: mean, std, min, max, mode, median. These transformed time-series data into tabular features.
 
-Feature Consolidation: Each subject’s processed signal chunks were combined into a unified DataFrame named final_df. Each row corresponded to a chunk.
+- **Feature Consolidation:** Each subject’s processed signal chunks were combined into a unified DataFrame named final_df. Each row corresponded to a chunk.
 
-Label Filtering: Labels outside the main study conditions (i.e., 0, 5, 6, 7) were excluded. Only chunks labeled with 1 (Baseline), 2 (Stress), 3 (Amusement), or 4 (Meditation) were retained.
-Train-Test Splitting: To preserve subject-level independence, we used GroupShuffleSplit with subject IDs as groups for model 1. The data was split into training, validation, and test sets.
+- **Label Filtering:** Labels outside the main study conditions (i.e., 0, 5, 6, 7) were excluded. Only chunks labeled with 1 (Baseline), 2 (Stress), 3 (Amusement), or 4 (Meditation) were retained.
+- **Train-Test Splitting:** To preserve subject-level independence, we used GroupShuffleSplit with subject IDs as groups for model 1. The data was split into training, validation, and test sets.
 
-In parallel, survey data for each subject was extracted from individual ‘_readme.txt’ files located in their respective folders. Key variables (age, height, weight, gender, handedness, coffee consumption, sports, smoking, and illness status) were parsed, encoded as binary or numeric features, and aggregated into a unified table (‘wesad_survey.csv’), excluding subjects S1 and S12. This survey table was then merged with the processed chunk-level feature table (‘final_df’) using the subject identifier, resulting in ‘wesad_merged_df.csv’, which contained both physiological and survey features for each chunk. 
+- **Survey Date Extraction:** In parallel, survey data for each subject was extracted from individual ‘_readme.txt’ files located in their respective folders. Key variables (age, height, weight, gender, handedness, coffee consumption, sports, smoking, and illness status) were parsed, encoded as binary or numeric features, and aggregated into a unified table (‘wesad_survey.csv’), excluding subjects S1 and S12. This survey table was then merged with the processed chunk-level feature table (‘final_df’) using the subject identifier, resulting in ‘wesad_merged_df.csv’, which contained both physiological and survey features for each chunk. 
 
-**Model Building: Model 1 - Random Forest Classifier (Sensor Data + PANAS)**
+### Model 1: Random Forest Classifier (Sensor Data + PANAS)
+
 <br> This model used both sensor-derived features and PANAS questionnaire responses. </br>
 <br>
 ```
