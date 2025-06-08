@@ -19,7 +19,7 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 ### XGBoost Confusion Matrix
 
-![XGBoost Confusion Matrix](figures/xgboost_confusion_matrix.png
+![XGBoost Confusion Matrix](figures/xgboost_confusion_matrix.png)
 
 
 ![Image](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
