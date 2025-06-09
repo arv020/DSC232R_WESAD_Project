@@ -85,8 +85,8 @@ As part of our model building we intend to explore the connection between the se
 
 ### Model 1: Random Forest Classifier (Sensor Data + PANAS)
 
-<br> This model used both sensor-derived features and PANAS questionnaire responses. </br>
-<br>
+- Used both sensor and PANAS questionnaire features.
+- Parameters:
 ```
     rf = RandomForestClassifier(
     n_estimators=75,
@@ -96,14 +96,14 @@ As part of our model building we intend to explore the connection between the se
     min_samples_leaf=5)
  ```
 </br>
-The PANAS features were merged with the final_df. Columns with significant missing values were dropped. A GroupShuffleSplit was applied for training and evaluation. The goal of our models is to predict the label 1, 2, 3 or 4.
+- Merged PANAS with `final_df`, dropped columns with high missingness, train/validation/test split via GroupShuffleSplit.
 <br></br>
 
-**Model Building: Model 2 - Random Forest Classifier (Sensor Data Only)**
+### Model 2: Random Forest Classifier (Sensor Data Only)
 <br>Model 2 uses a Random Forest Classifier from the sklearn.ensemble module, which is appropriate for handling high dimensionality and noisy datasets. The goal of this model is to predict the label 1, 2, 3 or 4 of each sample and output a predicted class for each sample, allowing us to identify patterns in the features and distinguish the strongest feature statistic that predicts a label.  </br>
 
-This model excluded all questionnaire data and used only sensor-derived statistics. The model was instantiated using the following parameters: 
-
+- Excluded questionnaire data, used only sensor features.
+- Parameters:
 ```
 rf = RandomForestClassifier(
     n_estimators=100,
@@ -123,7 +123,7 @@ The model was trained using the training set and evaluated on both the validatio
 The merged dataset (‘wesad_merged_df.csv’) was used as input for the Random Forest model. Prior to training, features with zero importance (identified previously in an importance ranking) were removed. The final feature set included both physiological summary statistics and survey variables for each data chunk. 
 
 
-**Model Building: Model 3 - Random Forest Classifier (Sensor Data + Survey Data)**
+### Model 3: Random Forest Classifier (Sensor Data + Survey Data)
 <br>To select the optimal hyperparameters for the Random Forest model, several values for `n_estimators`, `max_depth`, and `min_samples_leaf` were systematically evaluated. Each combination was assessed based on training and test accuracy, and the values that balanced high test accuracy with reduced overfitting were chosen (see Results section/Model 3, Figure 2).</br>
 
 A Random Forest classifier was trained with the following hyperparameters:
@@ -143,7 +143,7 @@ rf = RandomForestClassifier(
 rf.fit(X_train, y_train)
 ```
 
-**Model Building: Model 4 - Random Forest Classifier(Sensor Data + Survey Data, Binary)**
+### Model 4: Random Forest Classifier(Sensor Data + Survey Data, Binary)
 <br>For binary stress classification, a new target variable `stress_binary` was created, where label 2 (stress) was mapped to 1 and all the other labels to 0. Features with zero importance (e.g., `coffee_last_hour`, `smoked_last_hour`) and columns unrelated to prediction were dropped. The data was split using an 80/20 stratified split to preserve class balance. </br>
 
 A Random Forest classifier was trained with:
@@ -167,7 +167,7 @@ rf = RandomForestClassifier(
 rf.fit(X_train, y_train)
 ```
 
-**Model Building: Model 5 - Random Forest Classifier (Sensor + Survey + PANAS Questionnaire Data)**
+### Model 5: Random Forest Classifier (Sensor + Survey + PANAS Questionnaire Data)
 <br>Model 5 utilized a comprehensive dataset combining sensor-derived features, demographic survey variables, and detailed self-report questionnaire data (PANAS, STAI, SAM, and SSSQ). This model was designed to evaluate the performance of a fully integrated feature set for multiclass emotional state classification (labels 1–4: Baseline, Stress, Amusement, Meditation).</br>
 
 The input data was loaded from wesad_merged_with_questionnaires.csv, which contained 773,832 samples and 62 columns. These columns included:
@@ -179,7 +179,7 @@ Demographic survey data: Age, height, weight, gender, dominant hand, lifestyle i
 Self-report data: PANAS (24 items), STAI (6 items), SAM (2 items), and SSSQ (6 items for stress condition)
 
 Non-predictive and identifier columns were excluded from modeling. Specifically, the following columns were dropped:
-['subject', 'modality', 'label', 'stress_binary', 'condition_id', 'condition_name'].
+['subject', 'modality', 'label', 'condition_id', 'condition_name'].
 Only numeric columns were retained for modeling. Any missing values were imputed using the median of each feature.
 
 The cleaned dataset was split into training and test sets using an 80/20 split. Stratification by label was applied to ensure class balance in both sets.
@@ -201,6 +201,31 @@ rf = RandomForestClassifier(
 )
 rf.fit(X_train, y_train)
 ```
+### Model 6: XGBoost Classifier (Sensor + Survey + Questionnaire Data)
+
+- **Data:** Used `wesad_with_questionnaires_preprocessed.csv` containing sensor-derived features, demographic survey responses, and questionnaire data (PANAS, etc.), with features and non-feature columns separated as follows:
+  - Features: All except `['label', 'subject', 'modality', 'condition_name', condition_id']`
+  - Target: `label` (shifted to 0-based for XGBoost)
+- **Train/Test Split:** 80/20, stratified by label, random seed 42.
+- **Model:** XGBoost multiclass classifier
+- **Hyperparameters:**
+  ```
+  xgb = XGBClassifier(
+      n_estimators=500,
+      max_depth=8,
+      learning_rate=0.1,
+      subsample=0.8,
+      colsample_bytree=1.0,
+      reg_alpha=0.01,
+      reg_lambda=2.0,
+      objective='multi:softmax',
+      num_class=len(y.unique()),
+      random_state=42,
+      n_jobs=-1,
+      tree_method='hist'
+    )
+  ```
+- **Training:** Model trained on training set; predictions made on both training and test sets.
 
 ## <u> Results </u>
 
@@ -209,27 +234,26 @@ rf.fit(X_train, y_train)
 Our raw data exploration showed us that each subject has ~2–3 million time points. The total labeled observations across the dataset: 60,807,600. No missing data was observed in any sensor modality. Participant sample size consisted of n = 15 subjects (S2 to S17, excluding S12).
 
 The WESAD dataset contained a series of emotional states induced by laboratory based tasks and were defined as follows:
-
-0: Undefined or transitional time
-1: Baseline
-2: Stress (TSST)
-3: Amusement
-4: Meditation
-5, 6, 7: Other/control conditions
+- 0: Undefined or transitional time
+- 1: Baseline
+- 2: Stress (TSST)
+- 3: Amusement
+- 4: Meditation
+- 5, 6, 7: Other/control conditions
 
 For our classification tasks we opted to only assess the labels: Baseline (label 1), Stress (2), Amusement (3), and Meditation (4).
 
-WESAD also included a robust self-report battery including: PANAS (24 items), STAI (6 items), SAM (2 items), and SSSQ (6 items for Stress only) were parsed from individual CSV files into a unified DataFrame (all_questionnaires.csv).
+WESAD also included a robust self-report battery including: PANAS (24 items), STAI (6 items), SAM (2 items), and SSSQ (6 items for Stress only) were parsed from individual CSV files into the unified DataFrame `all_questionnaires.csv`.
 
 The dataset comprises time-series physiological signals using two synchronized wearable devices, a chest and wrist sensor:
+- **RespiBAN (worn on chest):** ECG, EDA, EMG, RESP, TEMP, ACC 
+- **Empatica E4 (worn on wrist):** BVP, EDA, TEMP, ACC 
 
-RespiBAN (worn on chest): ECG, EDA, EMG, RESP, TEMP, ACC 
-Empatica E4 (worn on wrist): BVP, EDA, TEMP, ACC 
-
-The sensors captured a multidimensional perspective of overall physiological and motion data including but not limited to: accelerometer, gyroscope, electrocardiogram,skin conductance, temperature, respiration rate and more.
+Sensors captured data including accelerometer, gyroscope, electrocardiogram, skin conductance, temperature, respiration rate, and more. 
 
 
-**Visual exploration figures of raw sensor data:**
+#### Visual Exploration Figures of Raw Sensor Data
+
 The following plots display raw physiological signals collected from the chest- and wrist-worn sensors in the WESAD dataset. For each emotional condition (Baseline, Stress, Amusement, Meditation), we extracted a single 1,000-sample segment from the first occurrence of that label to visualize representative patterns. Multichannel signals (e.g., accelerometer) show each axis separately, while univariate signals (e.g., ECG, EMG) are plotted as single traces. These visualizations provide insight into the temporal behavior and variability of different sensor modalities prior to feature extraction. Emotional states appear to influence sensor modalities in different ways. No significant data quality issues were encountered.
 
 ![Image](https://github.com/user-attachments/assets/14128958-b05f-418d-98a1-1dc9794d379d)
@@ -253,7 +277,7 @@ The following plots display raw physiological signals collected from the chest- 
 ![Image](https://github.com/user-attachments/assets/8469697e-904d-4508-9c2e-a2d859196f79)
 <br>**Figure 9.** Wrist accelerometer (ACC) signal across emotional states.  </br>
 
-**Visual exploration figures of Self Report Visuals:**
+#### Visual Exploration Figures of Self-Report Visuals
 
 <img src="https://github.com/user-attachments/assets/a58cd198-8a8f-4a42-b073-1197d104bed8" width="600"/>
 <br><br>
@@ -308,20 +332,19 @@ The following plots display raw physiological signals collected from the chest- 
 
 
 ### Preprocessing
+
 The raw time series data and questionnaire responses were systematically preprocessed to prepare for modeling.
 
-Chunking: Each subject’s signal data was combined into files split up by modality. These results were then segmented into 1000 sample chunks. These chunks for each segment were combined to create final_df which was used in our models. For each chunk, summary statistics such as mean, median, mode were computed. This resulted in a structured data frame that can be used in our models. After processing all subjects, a total of 160,518 chunks were extracted.
-
-Label Filtering: The original labels in the datasets included 0 through 7. It was suggested in the original dataset ReadMe to only focus on 1-4, as 0 is unidentified and 5-7 are control/transitional labels. We filtered the data to retain labels 1-4 only.
-
-Questionnaires: Each subject’s PANAS, STAI, and SAM questionnaire data was extracted from their respective SX_quest.csv files and merged into a master file all_questionnaires.csv. This was combined with final_df in Model 1. 
+- **Chunking:** Each subject’s signal data was combined into files split up by modality. These results were then segmented into 1000 sample chunks. These chunks for each segment were combined to create `final_df` which was used in our models. For each chunk, summary statistics such as mean, median, mode were computed. This resulted in a structured data frame that can be used in our models. After processing all subjects, a total of 160,518 chunks were extracted.
+- **Label Filtering:** The original labels in the datasets included 0 through 7. It was suggested in the original dataset ReadMe to only focus on 1-4, as 0 is unidentified and 5-7 are control/transitional labels. We filtered the data to retain labels 1-4 only.
+- **Questionnaires:** Each subject’s PANAS, STAI, and SAM questionnaire data was extracted from their respective SX_quest.csv files and merged into a master file `all_questionnaires.csv`. This was combined with `final_df` in Model 1. 
 
 ### Model 1: Random Forest Classifier (Sensor Data + PANAS):
 <br>Our approach was to combine the self-report surveys and sensor data to predict labels 1-4. This initial attempt unveiled that the prediction model did not perform well when assessing all features (the sensor summary stats and the self-report). There was also an overfitting issue with a training accuracy of 1. We modified the model to run with features that were highly correlated with the label prediction but found little, to no improvement. Overall, it was decided to take another approach.</br>
 
-Training Accuracy: 1.0
-Validation Accuracy: 0.465
-Test Accuracy: 0.613
+- **Training Accuracy:** 1.0
+- **Validation Accuracy:** 0.465
+- **Test Accuracy:** 0.613
 
 ![Image](https://github.com/user-attachments/assets/a07a3cf4-b973-401b-acef-c8b63cb506ce)
 <br>**Figure 10.** Self-Report Variable Correlation for Label Prediction. The self-report variables with strongest to weakest correlations to predicting label outcomes. (above)</br>
@@ -386,6 +409,14 @@ Classification Report (Test Set):
 
 ![Image](https://github.com/user-attachments/assets/38864e80-b96f-429d-82a3-b91e268374d2)
 <br>**Figure 17.** Classification report for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification).</br>
+
+### Model 6: XGBoost Classifier (Sensor + Survey + Questionnaire Data)
+
+Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all available processed features (sensor, survey, and questionnaire data).
+
+- **Train Accuracy:** 0.846
+- **Test Accuracy:** 0.820
+
 
 
 **Final Model and Summary**
