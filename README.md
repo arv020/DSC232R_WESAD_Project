@@ -344,7 +344,16 @@ The raw time series data and questionnaire responses were systematically preproc
 
 - **Chunking:** Each subject’s signal data was combined into files split up by modality. These results were then segmented into 1000 sample chunks. These chunks for each segment were combined to create `final_df` which was used in our models. For each chunk, summary statistics such as mean, median, mode were computed. This resulted in a structured data frame that can be used in our models. After processing all subjects, a total of 160,518 chunks were extracted.
 - **Label Filtering:** The original labels in the datasets included 0 through 7. It was suggested in the original dataset ReadMe to only focus on 1-4, as 0 is unidentified and 5-7 are control/transitional labels. We filtered the data to retain labels 1-4 only.
-- **Questionnaires:** Each subject’s PANAS, STAI, and SAM questionnaire data was extracted from their respective SX_quest.csv files and merged into a master file `all_questionnaires.csv`. This was combined with `final_df` in Model 1. 
+- **Questionnaires:** Each subject’s PANAS, STAI, and SAM questionnaire data was extracted from their respective SX_quest.csv files and merged into a master file `all_questionnaires.csv`. This was combined with `final_df` in Model 1.
+
+### Model Performance Comparison Overview
+
+To provide an overview of model performance, Figure 2 summarizes the test accuracy of each multiclass classification model evaluated in this study. As shown, XGBoost (Model 6) achieved the highest test accuracy, followed by the various Random Forest models with different feature sets. 
+
+<img src="figures/model_comparison.png" width="500"/><br>
+<strong>Figure 2.</strong> Test Accuracy of Each Multiclass Classification Model
+
+Below we provide detailed results and discussion for each model. 
 
 ### Model 1: Random Forest Classifier (Sensor Data + PANAS):
 <br>Our approach was to combine the self-report surveys and sensor data to predict labels 1-4. This initial attempt unveiled that the prediction model did not perform well when assessing all features (the sensor summary stats and the self-report). There was also an overfitting issue with a training accuracy of 1. We modified the model to run with features that were highly correlated with the label prediction but found little, to no improvement. Overall, it was decided to take another approach.</br>
