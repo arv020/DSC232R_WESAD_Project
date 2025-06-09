@@ -430,7 +430,7 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 
 **Final Model and Summary**
 
-The final model selected was a Random Forest classifier trained on the dataset including the Sensor, Survey, and Questionnaire (PANAS) data for multiclass affective state classification (labels 1-4). It achieved the strongest test accuracy (within multiclass classification: 0.78), and robust performance across all the classes, with especially high recall for class 1. Feature importance analysis highlighted the value of aggregate sensor statistics and select questionnaire responses. These results indicate that a combination of physiological, questionnaires and self-report data enables effective multiclass label detection
+The final model selected was an XGBoost classifier (Model 6) trained on the combined Sensor, Survey, and Questionnaire (PANAS) data for multiclass affective state classification (labels 1-4). Model 6 achieved the strongest test accuracy among all evaluated models (e.g., 0.82), demonstrating robust and balanced performance across all classes. Feature importance analysis revealed that both physiological variables (like recent illness, height, and weight) and behaviorial factors (such as daily sports participation and coffee consumption) play a key role in predicting affective states. These findings highlight the value of integrating sensor data with self-report measures and questionnaires for effective multiclass emotional state detection. Overall, XGBoost provided improved accuracy and interpretability for this task, which is the reason we chose it as the final model. 
 
 ## <u>**Discussion** </u>
 
@@ -458,11 +458,13 @@ The confusion matrix for Model 2 highlighted this challenge, as some emotional s
 ![Image](https://github.com/user-attachments/assets/835cf4a7-6fcb-4363-b0a9-37c8431d3781)
 Figure X: Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
 
+
 **Model 3: Sensor Data + Survey Data**
 
 <br>Model 3 tries a different multiclass classification by incorporating sensor data and the survey data (NOT PANAS). These questions include variables such as age, gender, health behaviors and lifestyle factors. We wanted to see if these context-specific variables could improve the performance of our models 
 
 Model 3 outperformed Model 1 and 2 in labeling the four emotional states. Feature importance showed that both sensor statistics and survey contributed to these results. However, there is overfitting with training being over 91%. Dropping features with almost zero importance improved the model generalization by a little bit.</br>
+
 
 **Model 4: Sensor Data + Survey Data (Binary Classification)**
 
@@ -472,6 +474,7 @@ The plots showed that the model’s confidence in predicting stress increased wh
 
 While model 4's binary approach achieved the highest accuracy observed in our experiments, it was mainly intended as an exploratory step to understand the maximum possible performance when distinguishing stress from other states. Ultimately, our main objective was to develop models capable of distinguishing among all four affective states, as this provides more nuanced and actionable insights. Therefore, we continued our focus on multiclass classification for the remainder of our modeling process. 
 
+
 **Model 5: Sensor Data + Survey + PANAS Questionnaire Data**
 
 <br>Model 5 combined all available data sources: sensor-derived features, demographic survey responses, and psychological self-report questionnaires (PANAS, STAI, SAM, SSSQ), to predict the four affective states. This comprehensive approach resulted in a notable multiclass test accuracy of 78.2%, showing balanced performance across most classes and improved results compared to previous models.</br>
@@ -479,6 +482,7 @@ While model 4's binary approach achieved the highest accuracy observed in our ex
 The strongest results were observed for Baseline (89.4%) and Stress (74.5%), while Amusement remained challenging to distinguish (53.7%), consistent with trends seen in earlier models. Including self-reported affect measures likely helped disambiguate subtle states like Meditation and Stress, while demographic features added context that improved generalization.
 
 Despite the larger feature set, overfitting remained minimal (training accuracy ~91%), likely due to the model’s depth and regularization. This iteration highlighted the value of integrating diverse data sources; however, some challenges persisted, particularly with classifying underrepresented or overlapping states. These insights motivated the exploration of alternative algorithms and further feature optimization, leading to the development of Model 6. 
+
 
 **Model 6: Sensor Data + Survey + PANAS Questionnaire Data (XGBoost)**
 
@@ -503,6 +507,8 @@ Despite the strong performance of Model 6, several limitations should be conside
 ## <u>**Conclusion** </u>
 
 One of the most rewarding aspects of this project was the interdisciplinary lens through which we approached physiological state detection. Integrating knowledge from psychology, physiology, and machine learning gave us a more nuanced understanding of how emotion manifests in sensor data. By interpreting sensor data through a biopsychological framework, we translated data grounded in human experience, an area we are all passionate about exploring.
+
+As we developed each model, we built on the insights gained from the models that came before, refining or changing our techniques and deepening our understadning with every iteration. While our binary classification model (Model 4) achieved the highest accuracy for distinguishing stress from other states, it was Model 6 (XGBoost) a multiclass model that brought together sensor data, surveys, and psychological measures, and ended up giving us the most well-reounded and reliable results when it came to predicting all the different emotional states. Even though we gave both XGBoost and Random Forest the same combined features, XGBoost came out on top. We think that's because XGBoost can pick up on more subtle patterns in the data and has extra regularization that helps prevent overfitting, which really made a difference when it came to separating out those tricky emotional states. 
 
 If we could do things differently, there are several areas we would have explored further:
 
