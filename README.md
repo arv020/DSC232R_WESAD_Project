@@ -508,6 +508,8 @@ Explore additional algorithms: Beyond the models discussed in class, we would li
 Reconsider data preprocessing strategy: Instead of chunking, using individual data points could increase the number of training examples and potentially improve generalization.
 While our final model integrated many of the features proposed in Milestone 3, the feature engineering process was inherently iterative, and there are still many promising directions to pursue.
 
+All in all, throughout this project, we learned just how crucial data manipulation and transformation are to successful modeling. As seen in the variety of models we implemented, combining different types of data-sensor readings, survey responses, and self-reported questionnaires, consistently led to better performance. However, it wasn't just about including more data; it was equally important to find the right ways to represent and preprocess each data type so theyt could be effectively used by our machine learning models. This process taught us that thoughtful data integration and preparation are just as important as model selection in achieving meaningful results. 
+
 
 ## <u>**Statement of Collaboration** </u>
 
