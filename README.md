@@ -29,7 +29,9 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 **Figure 4.** Learning Curve for XGBoost Classifier Showing Training and Validation Accuracy
 
+<img src="figures/xgboost_feature_importance.png" width="500"/>
 
+**Figure 5.** Top 15 Feature Importances for XGBoost (Model 6).
 
 
 [Image](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
@@ -434,15 +436,15 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 
 <img src="figures/xgboost_learning_curve.png" width="500"/>
 
-**Figure 19.** Learning Curve for XGBoost Classifier (Model 6) Showing Training and Validation Accuracy
+**Figure 3.** Learning Curve for XGBoost Classifier (Model 6) Showing Training and Validation Accuracy
 
 <img src="figures/xgboost_confusion_matrix.png" width="500"/>
 
-**Figure 20.** Confusion Matrix for Model 6 (XGBoost).
+**Figure 4.** Confusion Matrix for Model 6 (XGBoost).
 
 <img src="figures/xgboost_feature_importance.png" width="500"/>
 
-**Figure 21.** Top 15 Feature Importances for XGBoost (Model 6).
+**Figure 5.** Top 15 Feature Importances for XGBoost (Model 6).
 
 
 **Final Model and Summary**
