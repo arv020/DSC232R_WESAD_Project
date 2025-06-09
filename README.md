@@ -363,24 +363,20 @@ Below we provide detailed results and discussion for each model.
 
 For our second Random Forest Model which does NOT include the PANAS dataset and only the time series data, our results consist of the following: 
 
-To assess model performance and potential overfitting, we examined the learning curve for model 2 (Figure 12). The learning curve displays training and validation accuracy as the number of training samples increases.
+To assess model performance and potential overfitting, we examined the learning curve for model 2 (Figure 15). The learning curve displays training and validation accuracy as the number of training samples increases.
 
 ![Learning Curve Model 2](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
 <br><strong>Figure 15.</strong> Learning Curve for Model 2 (Random Forest, Sensor Data Only).</br>
 
+The following classification report summarizes precision, recall, F1-score, and support for each class on the test set, offering a detailed view of the model’s predictive performance.
 
-<img width="606" alt="Image" src="https://github.com/user-attachments/assets/ad3bf41d-97cd-4b4f-b6bc-ab8c8eeddcc5" />
+<img width="606" alt="Classification Report Model 2" src="https://github.com/user-attachments/assets/ad3bf41d-97cd-4b4f-b6bc-ab8c8eeddcc5" />
+<br><strong>Figure 16.</strong> Classification Report for Model 2 (Random Forest, Sensor Data Only).</br>
 
-We created the following Classification Report on the Test set to better understand how our model is predicting each label through calculating Precision, Recall, F1-Score and Support. 
-
-![Classification Report](https://github.com/user-attachments/assets/ad3bf41d-97cd-4b4f-b6bc-ab8c8eeddcc5)
-
-
-A confusion matrix was also generated to visualize prediction performance across the four classes.
+To further evaluate the model, we generated a confusion matrix to visualize prediction performance across the four target classes (Figure 17).
 
 ![Confusion Matrix Model 2](https://github.com/user-attachments/assets/a2e8d622-ba2e-43c1-b721-92eaa1840f2f)
-<br><strong>Figure 16.</strong> Confusion Matrix for Model 2 (Random Forest, Sensor Data Only).</br>
-
+<br><strong>Figure 17.</strong> Confusion Matrix for Model 2 (Random Forest, Sensor Data Only).</br>
 
 
 ### Model 3: Random Forest Classifier (Multiclass classification: Labels - 1,2,3,4):
