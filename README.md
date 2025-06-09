@@ -19,14 +19,14 @@ The following sensor modalities are included (worn either via chest or wrist): b
 <img src="figures/model_comparison.png" width="500"/><br>
 <strong>Figure 2.</strong> Test Accuracy of Each Multiclass Classification Model
 
-<img src="figures/xgboost_confusion_matrix.png" width="500"/><br>
-<strong>Figure 28.</strong> Confusion Matrix Model 6
-
 <img src="figures/xgboost_learning_curve.png" width="500"/><br>
-<strong>Figure 27.</strong> Learning Curve for XGBoost Classifier Showing Training and Validation Accuracy
+<strong>Figure 26.</strong> Learning Curve for XGBoost Classifier Showing Training and Validation Accuracy
+
+<img src="figures/xgboost_confusion_matrix.png" width="500"/><br>
+<strong>Figure 27.</strong> Confusion Matrix Model 6
 
 <img src="figures/xgboost_feature_importance.png" width="500"/><br>
-<strong>Figure 29.</strong> Top 15 Feature Importances for XGBoost (Model 6).
+<strong>Figure 28.</strong> Top 15 Feature Importances for XGBoost (Model 6).
 
 ## <u>Methods </u>
 
@@ -437,13 +437,13 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 <br>**Figure 25.** Classification report for XGBoost (Model 6).</br>
 
 <img src="figures/xgboost_learning_curve.png" width="500"/>
-<br>**Figure 27.** Learning Curve for XGBoost Classifier (Model 6) Showing Training and Validation Accuracy</br>
+<br>**Figure 26.** Learning Curve for XGBoost Classifier (Model 6) Showing Training and Validation Accuracy</br>
 
 <img src="figures/xgboost_confusion_matrix.png" width="500"/>
-<br>**Figure 28.** Confusion Matrix for Model 6 (XGBoost).</br>
+<br>**Figure 27.** Confusion Matrix for Model 6 (XGBoost).</br>
 
 <img src="figures/xgboost_feature_importance.png" width="500"/>
-<br>**Figure 29.** Top 15 Feature Importances for XGBoost (Model 6).</br>
+<br>**Figure 28.** Top 15 Feature Importances for XGBoost (Model 6).</br>
 
 
 **Final Model and Summary**
@@ -479,7 +479,7 @@ The confusion matrix for Model 2 highlighted this challenge, as some emotional s
 
 ![Image](https://github.com/user-attachments/assets/835cf4a7-6fcb-4363-b0a9-37c8431d3781)
 
-**Figure 30.** Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
+**Figure 29.** Shows how statistics such as the mean and median and std were the most infuential important features as part of this model. 
 
 
 **Model 3: Sensor Data + Survey Data**
@@ -509,7 +509,7 @@ Despite the larger feature set, overfitting remained minimal (training accuracy 
 
 **Model 6: Sensor Data + Survey + PANAS Questionnaire Data (XGBoost)**
 
-Model 6 which is our best and final model builds on our previous work  y applying XGBoost to all our data-sensor readings, survey answers, and psychological questionnaires to classify the four emotional states. This approach outperformed all earlier models achieving the highest multiclass test accuracy of 82%, with strong and balanced performance across all classes. 
+Model 6 which is our best and final model builds on our previous work by applying XGBoost to all our data-sensor readings, survey answers, and psychological questionnaires to classify the four emotional states. This approach outperformed all earlier models achieving the highest multiclass test accuracy of 82%, with strong and balanced performance across all classes. 
 
 Feature importance analysis from XGBoost revealed that a mix of physiological factors (recent illness status, height, weight, and right-hand dominance) and behavioral variables (like sports participation and coffee consumption) were especially predictive for affective state classification. The confusion matrix and classification report indicated that Model 6 improved recall and precision for most classes, particularly narrowing the performance gap for states like Amusement that were challenging from previous models. 
 
@@ -523,7 +523,7 @@ Despite the strong performance of Model 6, several limitations should be conside
 - **Generalizability:** Our models were trained on data collected in a lab setting. Real-world noise and contextual variability could significantly affect model accuracy in practical deployment.
 - **Chunk Size:** Fixed-size chunking (1,000 samples) may not align well with the natural boundaries of emotional episodes, potentially splitting or truncating relevant events.
 - **Class Imbalance:** Although moderate, class imbalance likely impacted classifier sensitivity, especially for underrepresented states like Amusement.
-- **Model Variety:** While XGBoost outperformed previous models, we did not explore more specialized time-series models might better capture complex temporal dependencies in phsyiological signals.
+- **Model Variety:** While XGBoost outperformed previous models, we did not explore more specialized time-series models might better capture complex temporal dependencies in physiological signals.
 -  **Self-Report Bias:** The use of self-report questionnaires introduces subjectivity, which may limit the objectivity and reproducibility of affective state detection. 
 
 
@@ -531,7 +531,7 @@ Despite the strong performance of Model 6, several limitations should be conside
 
 One of the most rewarding aspects of this project was the interdisciplinary lens through which we approached physiological state detection. Integrating knowledge from psychology, physiology, and machine learning gave us a more nuanced understanding of how emotion manifests in sensor data. By interpreting sensor data through a biopsychological framework, we translated data grounded in human experience, an area we are all passionate about exploring.
 
-As we developed each model, we built on the insights gained from the models that came before, refining or changing our techniques and deepening our understadning with every iteration. While our binary classification model (Model 4) achieved the highest accuracy for distinguishing stress from other states, it was Model 6 (XGBoost) a multiclass model that brought together sensor data, surveys, and psychological measures, and ended up giving us the most well-reounded and reliable results when it came to predicting all the different emotional states. Even though we gave both XGBoost and Random Forest the same combined features, XGBoost came out on top. We think that's because XGBoost can pick up on more subtle patterns in the data and has extra regularization that helps prevent overfitting, which really made a difference when it came to separating out those tricky emotional states. 
+As we developed each model, we built on the insights gained from the models that came before, refining or changing our techniques and deepening our understanding with every iteration. While our binary classification model (Model 4) achieved the highest accuracy for distinguishing stress from other states, it was Model 6 (XGBoost) a multiclass model that brought together sensor data, surveys, and psychological measures, and ended up giving us the most well-rounded and reliable results when it came to predicting all the different emotional states. Even though we gave both XGBoost and Random Forest the same combined features, XGBoost came out on top. We think that's because XGBoost can pick up on more subtle patterns in the data and has extra regularization that helps prevent overfitting, which really made a difference when it came to separating out those tricky emotional states. 
 
 If we could do things differently, there are several areas we would have explored further:
 
@@ -547,7 +547,7 @@ If we could do things differently, there are several areas we would have explore
 
 - **Feature Engineering:** While our final model integrated many of the features proposed in Milestone 3, feature engineering is inherently iterative, and there can most definitely be more promising varaibles and transformations to explore. 
 
-All in all, throughout this project, we learned just how crucial data manipulation and transformation are to successful modeling. As seen in the variety of models we implemented, combining different types of data-sensor readings, survey responses, and self-reported questionnaires, consistently led to better performance. However, it wasn't just about including more data; it was equally important to find the right ways to represent and preprocess each data type so theyt could be effectively used by our machine learning models. This process taught us that thoughtful data integration and preparation are just as important as model selection in achieving meaningful results. 
+All in all, throughout this project, we learned just how crucial data manipulation and transformation are to successful modeling. As seen in the variety of models we implemented, combining different types of data-sensor readings, survey responses, and self-reported questionnaires, consistently led to better performance. However, it wasn't just about including more data; it was equally important to find the right ways to represent and preprocess each data type so they could be effectively used by our machine learning models. This process taught us that thoughtful data integration and preparation are just as important as model selection in achieving meaningful results. 
 
 
 ## <u>**Statement of Collaboration** </u>
