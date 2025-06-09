@@ -13,7 +13,7 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 ### Figures 
 
-![Image](https://github.com/user-attachments/assets/f60c0fa1-ec8c-4cca-abd5-d79cdaa010e4)
+![Class Distribution](figures/class_distribution.png)
 
 **Figure 1.** Distribution of labeled emotional states in the processed WESAD dataset. Each count corresponds to a 1,000-sample signal chunk, highlighting a moderate class imbalance with fewer examples of Amusement and Stress compared to Baseline.
 
