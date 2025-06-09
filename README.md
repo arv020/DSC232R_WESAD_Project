@@ -23,7 +23,7 @@ The following sensor modalities are included (worn either via chest or wrist): b
 <strong>Figure 26.</strong> Learning Curve for XGBoost Classifier Showing Training and Validation Accuracy
 
 <img src="figures/xgboost_confusion_matrix.png" width="500"/><br>
-<strong>Figure 27.</strong> Confusion Matrix Model 6
+<strong>Figure 27.</strong> Confusion Matrix Model 6 (XGBoost)
 
 <img src="figures/xgboost_feature_importance.png" width="500"/><br>
 <strong>Figure 28.</strong> Top 15 Feature Importances for XGBoost (Model 6).
