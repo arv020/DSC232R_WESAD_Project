@@ -435,19 +435,19 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 
 <img src="figures/model6_xgboost_classification_report.png" width="500"/>
 
-**Figure 25. Classification report for XGBoost (Model 6).**
+**Figure 25.** Classification report for XGBoost (Model 6).
 
 <img src="figures/xgboost_learning_curve.png" width="500"/>
 
-**Figure 26. Learning Curve for XGBoost Classifier (Model 6) Showing Training and Validation Accuracy**
+**Figure 26.** Learning Curve for XGBoost Classifier (Model 6) Showing Training and Validation Accuracy.
 
 <img src="figures/xgboost_confusion_matrix.png" width="500"/>
 
-**Figure 27. Confusion Matrix for Model 6 (XGBoost).**
+**Figure 27.** Confusion Matrix for Model 6 (XGBoost).
 
 <img src="figures/xgboost_feature_importance.png" width="500"/>
 
-**Figure 28. Top 15 Feature Importances for XGBoost (Model 6).**
+**Figure 28.** Top 15 Feature Importances for XGBoost (Model 6).
 
 
 **Final Model and Summary**
