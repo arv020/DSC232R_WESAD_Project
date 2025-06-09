@@ -490,23 +490,19 @@ Model Constraints: We focused on Random Forests due to their interpretability an
 
 One of the most rewarding aspects of this project was the interdisciplinary lens through which we approached physiological state detection. Integrating knowledge from psychology, physiology, and machine learning gave us a more nuanced understanding of how emotion manifests in sensor data. By interpreting sensor data through a biopsychological framework, we translated data grounded in human experience, an area we are all passionate about exploring.
 
-For this model, some future directions we would have liked to continue to explore the model:
+If we could do things differently, there are several areas we would have explored further:
 
+- **Normalization/Standardization:** Applying normalization or standardization to each entry’s summary statistics could help reduce variance caused by differing sensor scales, potentially improving model comparability and performance. 
 
-Normalize/standardize summary statistics: Applying normalization or standardization to each entry’s summary statistics could help reduce variance caused by differing sensor scales.
+- **Time-Series Chunk Optimization:** We currently segment data into 1,000-reading chunks, but the ideal chunk size remains an open question. Future work will explore different segment lengths and dynamic segmentation strategies to reveal more about how temporal patterns relate to emotional states, thereby enhancing model performance.
+  
+- **Better Hyperparameter Tuning:** We performed a limited grid search due to time constraints. Future iterations could use more efficient methods like randomized search or Bayesian optimization to better tune model parameters.
+  
+- **Algorithm Exploration:** Beyond the models discussed in class, we would like to test more advanced or domain-specific algorithms, including deep learning approaches tailored to time-series data.
+  
+- **Alternative Preprocessing:** Instead of chunking, using individual data points could increase the number of training examples and potentially improve generalization.
 
-
-Optimize time-series chunk size: We currently segment data into 1,000-reading chunks, but the ideal chunk size remains an open question. Future work will explore different segment lengths and dynamic segmentation strategies to enhance model performance.
-
-
-Improve hyperparameter tuning: We performed a limited grid search due to time constraints. Future iterations could use more efficient methods like randomized search or Bayesian optimization to better tune model parameters.
-
-
-Explore additional algorithms: Beyond the models discussed in class, we would like to test more advanced or domain-specific algorithms, including deep learning approaches tailored to time-series data.
-
-
-Reconsider data preprocessing strategy: Instead of chunking, using individual data points could increase the number of training examples and potentially improve generalization.
-While our final model integrated many of the features proposed in Milestone 3, the feature engineering process was inherently iterative, and there are still many promising directions to pursue.
+- **Feature Engineering:** While our final model integrated many of the features proposed in Milestone 3, feature engineering is inherently iterative, and there can most definitely be more promising varaibles and transformations to explore. 
 
 All in all, throughout this project, we learned just how crucial data manipulation and transformation are to successful modeling. As seen in the variety of models we implemented, combining different types of data-sensor readings, survey responses, and self-reported questionnaires, consistently led to better performance. However, it wasn't just about including more data; it was equally important to find the right ways to represent and preprocess each data type so theyt could be effectively used by our machine learning models. This process taught us that thoughtful data integration and preparation are just as important as model selection in achieving meaningful results. 
 
