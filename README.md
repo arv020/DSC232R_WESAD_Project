@@ -459,31 +459,45 @@ The confusion matrix for Model 2 highlighted this challenge, as some emotional s
 Figure X: Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
 
 **Model 3: Sensor Data + Survey Data**
+
 <br>Model 3 tries a different multiclass classification by incorporating sensor data and the survey data (NOT PANAS). These questions include variables such as age, gender, health behaviors and lifestyle factors. We wanted to see if these context-specific variables could improve the performance of our models 
 
 Model 3 outperformed Model 1 and 2 in labeling the four emotional states. Feature importance showed that both sensor statistics and survey contributed to these results. However, there is overfitting with training being over 91%. Dropping features with almost zero importance improved the model generalization by a little bit.</br>
 
 **Model 4: Sensor Data + Survey Data (Binary Classification)**
+
 <br>Model 4 reframed the problem as a binary classification problem. We wanted to distinguish stress (label 2) from all the other states. The result was really good - showing the highest performance across all the models.
 Feature pruning, like removing low importance features from the survey, helped remove some of the noise and improve generalization. The class balancing and hyperparameter tuning helped.</br>
 The plots showed that the model’s confidence in predicting stress increased when features like min, max and median fell within certain ranges. Overall, by focusing solely on stress detection, Model 4 delivered highly reliable predictions.
 
+While model 4's binary approach achieved the highest accuracy observed in our experiments, it was mainly intended as an exploratory step to understand the maximum possible performance when distinguishing stress from other states. Ultimately, our main objective was to develop models capable of distinguishing among all four affective states, as this provides more nuanced and actionable insights. Therefore, we continued our focus on multiclass classification for the remainder of our modeling process. 
+
 **Model 5: Sensor Data + Survey + PANAS Questionnaire Data**
-<br>Model 5 is our final model - it combines all available data sources: sensor-derived features, demographic survey responses, and psychological self-report questionnaires (PANAS, STAI, SAM, SSSQ)—to predict the four affective states. This comprehensive approach produced the highest multiclass test accuracy across all models at 78.2%, with a balanced performance across classes.</br>
-The model achieved strong results for Baseline (89.4%) and Stress (74.5%), but struggled more with Amusement (53.7%), consistent with earlier models. Including self-reported affect measures likely helped disambiguate subtle states like Meditation and Stress, while demographic features added context that improved generalization.
-Despite using many features, overfitting remained minimal (training accuracy ~91%), likely due to the model’s depth and regularization. The integrated data provided richer information and led to more nuanced predictions.
-Model 5 demonstrates the value of multimodal data fusion—pairing physiological signals with behavioral and psychological context can significantly enhance emotion classification from wearable devices.
-There are several limitations to note in our study:
-Generalizability: Our models were trained on data collected in a lab setting. Real-world noise and contextual variability could significantly affect model accuracy in practical deployment.
+
+<br>Model 5 combined all available data sources: sensor-derived features, demographic survey responses, and psychological self-report questionnaires (PANAS, STAI, SAM, SSSQ), to predict the four affective states. This comprehensive approach resulted in a notable multiclass test accuracy of 78.2%, showing balanced performance across most classes and improved results compared to previous models.</br>
+
+The strongest results were observed for Baseline (89.4%) and Stress (74.5%), while Amusement remained challenging to distinguish (53.7%), consistent with trends seen in earlier models. Including self-reported affect measures likely helped disambiguate subtle states like Meditation and Stress, while demographic features added context that improved generalization.
+
+Despite the larger feature set, overfitting remained minimal (training accuracy ~91%), likely due to the model’s depth and regularization. This iteration highlighted the value of integrating diverse data sources; however, some challenges persisted, particularly with classifying underrepresented or overlapping states. These insights motivated the exploration of alternative algorithms and further feature optimization, leading to the development of Model 6. 
+
+**Model 6: Sensor Data + Survey + PANAS Questionnaire Data (XGBoost)**
+
+Model 6 which is our best and final model builds on our previous work  y applying XGBoost to all our data-sensor readings, survey answers, and psychological questionnaires to classify the four emotional states. This approach outperformed all earlier models achieving the highest multiclass test accuracy of 82%, with strong and balanced performance across all classes. 
+
+Feature importance analysis from XGBoost revealed that a mix of physiological factors (recent illness status, height, weight, and right-hand dominance) and behavioral variables (like sports participation and coffee consumption) were especially predictive for affective state classification. The confusion matrix and classification report indicated that Model 6 improved recall and precision for most classes, particularly narrowing the performance gap for states like Amusement that were challenging from previous models. 
+
+Overfitting was prevented through the built-in regularization of XGBoost, even with a large and diverse set of features (training accuracy ~85%), which supports the model's generalizability. By integrating physiological, demographic, and psychological data with a robust machine learning algorithm, Model 6 demonstrates that combining multiple data sources leads to more accurate and interpretable predictions of emotional states from wearable device data. 
 
 
-Chunk Size Rigidity: Fixed-size chunking (1,000 samples) may not align well with the natural boundaries of emotional episodes, potentially splitting or truncating relevant events.
+**Limitations**
 
+Despite the strong performance of Model 6, several limitations should be considered:
 
-Class Imbalance: Although moderate, class imbalance likely impacted classifier sensitivity, especially for underrepresented states like Amusement.
-
-
-Model Constraints: We focused on Random Forests due to their interpretability and robustness, but more specialized time-series models might better capture complex temporal dependencies.
+- **Generalizability:** Our models were trained on data collected in a lab setting. Real-world noise and contextual variability could significantly affect model accuracy in practical deployment.
+- **Chunk Size:** Fixed-size chunking (1,000 samples) may not align well with the natural boundaries of emotional episodes, potentially splitting or truncating relevant events.
+- **Class Imbalance:** Although moderate, class imbalance likely impacted classifier sensitivity, especially for underrepresented states like Amusement.
+- **Model Variety:** While XGBoost outperformed previous models, we did not explore more specialized time-series models might better capture complex temporal dependencies in phsyiological signals.
+-  **Self-Report Bias:** The use of self-report questionnaires introduces subjectivity, which may limit the objectivity and reproducibility of affective state detection. 
 
 
 ## <u>**Conclusion** </u>
@@ -513,7 +527,7 @@ Our team collaborated very equally and worked very well together by leaning on o
 
 Ingrid Altamirano: Developer, Contribution: Git Integration and general environment setup, Model 2 build and exploration, ReadMe Writing
 
-Tatianna Sanchez: Developer, Model 3 and 4 build, preprocessing questionnaires and survey data, 
+Tatianna Sanchez: Developer, Model 3, 4, and 5 build, preprocessing questionnaires and survey data, made combined wesad dataframe with all variables, ReadMe Writing. 
 
 Marianne Sawires: Developer, Contribution: partial data exploration, preprocessing pkl files, model exploration, readme writing 
 
