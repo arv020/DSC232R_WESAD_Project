@@ -421,11 +421,14 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 ![Classification Report for XGBoost (Model 6)](figures/model6_xgboost_classification_report.png)
 **Figure 18.** Classification report for XGBoost (Model 6).
 
+![XGBoost Learning Curve](figures/xgboost_learning_curve.png)
+**Figure 19.** Learning Curve for XGBoost Classifier (Model 6) Showing Training and Validation Accuracy
+
 ![XGBoost Confusion Matrix](figures/xgboost_confusion_matrix.png)
-**Figure 19.** Confusion Matrix for Model 6 (XGBoost).
+**Figure 20.** Confusion Matrix for Model 6 (XGBoost).
 
 ![XGBoost Feature Importance](figures/xgboost_feature_importance.png)
-**Figure 20.** Top 15 Feature Importances for XGBoost (Model 6).
+**Figure 21.** Top 15 Feature Importances for XGBoost (Model 6).
 
 
 **Final Model and Summary**
@@ -456,7 +459,8 @@ Model 2 demonstrated that wearable sensor data alone can successfully distinguis
 The confusion matrix for Model 2 highlighted this challenge, as some emotional states, especially Stress vs. Amusement, were occasionally misclassified. This points to the nuanced nature of physiological responses: similar arousal levels can emerge from both positive and negative stimuli, complicating label boundaries. In future iterations we think investigating other models beyond what we have learned in our coursework could be used to process time-series specific data.
 
 ![Image](https://github.com/user-attachments/assets/835cf4a7-6fcb-4363-b0a9-37c8431d3781)
-Figure X: Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
+
+Figure 22: Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
 
 
 **Model 3: Sensor Data + Survey Data**
