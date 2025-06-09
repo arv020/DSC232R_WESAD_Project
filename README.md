@@ -206,24 +206,29 @@ rf.fit(X_train, y_train)
   - Target: `label` (shifted to 0-based for XGBoost)
 - **Train/Test Split:** 80/20, stratified by label, random seed 42.
 - **Model:** XGBoost multiclass classifier
-- **Hyperparameters:**
+
+**Hyperparameters and Rationale:**
   ```
   xgb = XGBClassifier(
-      n_estimators=500,
-      max_depth=8,
-      learning_rate=0.1,
-      subsample=0.8,
-      colsample_bytree=1.0,
-      reg_alpha=0.01,
-      reg_lambda=2.0,
-      objective='multi:softmax',
-      num_class=len(y.unique()),
-      random_state=42,
-      n_jobs=-1,
-      tree_method='hist'
+      n_estimators=500, # Large number of trees for better learning capacity
+      max_depth=8, # moderate depth to balance complexity and overfitting
+      learning_rate=0.1, # standard step size for each boosting round
+      subsample=0.8, # Helps prevent overfitting by training each tree on a random 80% data sample
+      colsample_bytree=1.0, # Used all features per tree
+      reg_alpha=0.01, # L1 regularization (sparsity)
+      reg_lambda=2.0, # L2 regularization (penalize large weights)
+      objective='multi:softmax', # Multiclass objective function 
+      num_class=len(y.unique()), # Number of classes
+      random_state=42, # For reproducibility
+      n_jobs=-1, # Parallel processing 
+      tree_method='hist' # For faster training with large datasets 
     )
   ```
-- **Training:** Model trained on training set; predictions made on both training and test sets.
+- Hyperparameters were selected based on validation accuracy and to address minor overfitting observed in prior Random Forest models.
+  
+**Training and Evaluation:** 
+- The model trained on training set; predictions made on both training and test sets.
+- Model performance was evaluated using accuracy, confusion matrix, and classification reports as described in Results section. 
 
 ## <u> Results </u>
 
