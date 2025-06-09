@@ -28,15 +28,6 @@ The following sensor modalities are included (worn either via chest or wrist): b
 <img src="figures/xgboost_feature_importance.png" width="500"/><br>
 <strong>Figure 5.</strong> Top 15 Feature Importances for XGBoost (Model 6).
 
-
-[Image](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
-**Figure 2.** Learning Curve Model 2
-
-![Image](https://github.com/user-attachments/assets/a2e8d622-ba2e-43c1-b721-92eaa1840f2f)
-
-**Figure 3.** Confusion Matrix Model 2
-
-
 ## <u>Methods </u>
 
 ### Environment Set-Up
