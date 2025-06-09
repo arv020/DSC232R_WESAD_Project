@@ -417,6 +417,13 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 - **Train Accuracy:** 0.846
 - **Test Accuracy:** 0.820
 
+**Classification Report:**
+
+![Confusion Matrix for Model 6](figures/model6_xgboost_confusion_matrix.png)
+**Figure X.** Confusion Matrix for Model 6 (XGBoost).
+
+![Top 15 Feature Importances for XGBoost (Model 6)](figures/model6_xgboost_feature_importance.png)
+**Figure Y.** Top 15 Feature Importances for XGBoost (Model 6).
 
 
 **Final Model and Summary**
