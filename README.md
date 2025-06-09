@@ -13,7 +13,7 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 ### Figures 
 
-![Class Distribution](figures/class_distribution.png)
+<img src="figures/class_distribution.png" width="500"/>
 
 **Figure 1.** Distribution of labeled emotional states in the processed WESAD dataset. Each count corresponds to a 1,000-sample signal chunk, highlighting a moderate class imbalance with fewer examples of Amusement and Stress compared to Baseline.
 
@@ -29,7 +29,7 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 **Figure 4.** Learning Curve for XGBoost Classifier Showing Training and Validation Accuracy
 
-![Learning Curve for XGBoost](figures/xgboost_learning_curve.png)
+
 
 
 
