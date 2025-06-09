@@ -17,9 +17,13 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 **Figure 1.** Distribution of labeled emotional states in the processed WESAD dataset. Each count corresponds to a 1,000-sample signal chunk, highlighting a moderate class imbalance with fewer examples of Amusement and Stress compared to Baseline.
 
+![Model Comparison](figures/model_comparison.png)
+
+**Figure 2.** Test Accuracy of Each Multiclass Classification Model 
+
 ![XGBoost Confusion Matrix](figures/xgboost_confusion_matrix.png)
 
-**Figure 2.** Confusion Matrix Model 6sdfsdf
+**Figure 3.** Confusion Matrix Model 6sdfsdf
 
 ![Image](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
 
