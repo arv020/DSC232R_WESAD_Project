@@ -13,25 +13,20 @@ The following sensor modalities are included (worn either via chest or wrist): b
 
 ### Figures 
 
-<img src="figures/class_distribution.png" width="500"/>
+<img src="figures/class_distribution.png" width="500"/><br>
+<strong>Figure 1.</strong> Distribution of labeled emotional states in the processed WESAD dataset. Each count corresponds to a 1,000-sample signal chunk, highlighting a moderate class imbalance with fewer examples of Amusement and Stress compared to Baseline.
 
-**Figure 1.** Distribution of labeled emotional states in the processed WESAD dataset. Each count corresponds to a 1,000-sample signal chunk, highlighting a moderate class imbalance with fewer examples of Amusement and Stress compared to Baseline.
+<img src="figures/model_comparison.png" width="500"/><br>
+<strong>Figure 2.</strong> Test Accuracy of Each Multiclass Classification Model
 
-<img src="figures/model_comparison.png" width="500"/>
+<img src="figures/xgboost_confusion_matrix.png" width="500"/><br>
+<strong>Figure 3.</strong> Confusion Matrix Model 6
 
-**Figure 2.** Test Accuracy of Each Multiclass Classification Model
+<img src="figures/xgboost_learning_curve.png" width="500"/><br>
+<strong>Figure 4.</strong> Learning Curve for XGBoost Classifier Showing Training and Validation Accuracy
 
-<img src="figures/xgboost_confusion_matrix.png" width="500"/>
-
-**Figure 3.** Confusion Matrix Model 6
-
-<img src="figures/xgboost_learning_curve.png" width="500"/>
-
-**Figure 4.** Learning Curve for XGBoost Classifier Showing Training and Validation Accuracy
-
-<img src="figures/xgboost_feature_importance.png" width="500"/>
-
-**Figure 5.** Top 15 Feature Importances for XGBoost (Model 6).
+<img src="figures/xgboost_feature_importance.png" width="500"/><br>
+<strong>Figure 5.</strong> Top 15 Feature Importances for XGBoost (Model 6).
 
 
 [Image](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
