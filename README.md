@@ -329,9 +329,9 @@ The following plots display raw physiological signals collected from the chest- 
 <br><br>
 
 
-### Preprocessing
+### Processed Data Overview
 
-The raw time series data and questionnaire responses were systematically preprocessed to prepare for modeling.
+The final modeling dataset was created after applying the preprocessing steps described in the Methods section. Below we summarize the structure and key characteristics of the data used for model training and evaluation:
 
 - **Chunking:** Each subject’s signal data was combined into files split up by modality. These results were then segmented into 1000 sample chunks. These chunks for each segment were combined to create `final_df` which was used in our models. For each chunk, summary statistics such as mean, median, mode were computed. This resulted in a structured data frame that can be used in our models. After processing all subjects, a total of 160,518 chunks were extracted.
 - **Label Filtering:** The original labels in the datasets included 0 through 7. It was suggested in the original dataset ReadMe to only focus on 1-4, as 0 is unidentified and 5-7 are control/transitional labels. We filtered the data to retain labels 1-4 only.
