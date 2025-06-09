@@ -255,25 +255,25 @@ Sensors captured data including accelerometer, gyroscope, electrocardiogram, ski
 The following plots display raw physiological signals collected from the chest- and wrist-worn sensors in the WESAD dataset. For each emotional condition (Baseline, Stress, Amusement, Meditation), we extracted a single 1,000-sample segment from the first occurrence of that label to visualize representative patterns. Multichannel signals (e.g., accelerometer) show each axis separately, while univariate signals (e.g., ECG, EMG) are plotted as single traces. These visualizations provide insight into the temporal behavior and variability of different sensor modalities prior to feature extraction. Emotional states appear to influence sensor modalities in different ways. No significant data quality issues were encountered.
 
 ![Image](https://github.com/user-attachments/assets/14128958-b05f-418d-98a1-1dc9794d379d)
-<br>**Figure 3.** Chest accelerometer (ACC) signal across emotional states. </br>
+<br>**Figure 6.** Chest accelerometer (ACC) signal across emotional states. </br>
 
 ![Image](https://github.com/user-attachments/assets/4a2516f1-8631-4b4f-8c86-ba5be1a5bf66)
-<br>**Figure 4.** Chest electrocardiogram (ECG) signal across emotional states. </br>
+<br>**Figure 7.** Chest electrocardiogram (ECG) signal across emotional states. </br>
 
 ![Image](https://github.com/user-attachments/assets/5aba6077-94b9-4fe6-ae51-eb79e03c755c)
-<br>**Figure 5.** Chest electromyography (EMG) signal across emotional states. </br>
+<br>**Figure 8.** Chest electromyography (EMG) signal across emotional states. </br>
 
 ![Image](https://github.com/user-attachments/assets/6e6508e6-f6ac-496a-9679-c84def885d5e)
-<br>**Figure 6.** Chest electrodermal activity (EDA) signal across emotional states.  </br>
+<br>**Figure 9.** Chest electrodermal activity (EDA) signal across emotional states.  </br>
 
 ![Image](https://github.com/user-attachments/assets/9a2c8ee5-3362-426b-904e-9433a5566069)
-<br>**Figure 7.** Chest temperature signal across emotional states.  </br>
+<br>**Figure 10.** Chest temperature signal across emotional states.  </br>
 
 ![Image](https://github.com/user-attachments/assets/98adbe6d-5226-491e-a39d-05b1d86ff76b)
-<br>**Figure 8.** Chest respiration signal across emotional states.  </br>
+<br>**Figure 11.** Chest respiration signal across emotional states.  </br>
 
 ![Image](https://github.com/user-attachments/assets/8469697e-904d-4508-9c2e-a2d859196f79)
-<br>**Figure 9.** Wrist accelerometer (ACC) signal across emotional states.  </br>
+<br>**Figure 12.** Wrist accelerometer (ACC) signal across emotional states.  </br>
 
 #### Visual Exploration Figures of Self-Report Visuals
 
@@ -354,10 +354,10 @@ Below we provide detailed results and discussion for each model.
 - **Test Accuracy:** 0.613
 
 ![Image](https://github.com/user-attachments/assets/a07a3cf4-b973-401b-acef-c8b63cb506ce)
-<br>**Figure 10.** Self-Report Variable Correlation for Label Prediction. The self-report variables with strongest to weakest correlations to predicting label outcomes. (above)</br>
+<br>**Figure 13.** Self-Report Variable Correlation for Label Prediction. The self-report variables with strongest to weakest correlations to predicting label outcomes. (above)</br>
 
 ![Image](https://github.com/user-attachments/assets/11789cbe-ff07-4015-88bb-8dc1b12b586c)
-<br>**Figure 11.** PANAS + Sensor Model Performance Scores </br>
+<br>**Figure 14.** PANAS + Sensor Model Performance Scores </br>
 
 ### Model 2: Random Forest Classifier (Sensor Data Only):
 
@@ -366,7 +366,7 @@ For our second Random Forest Model which does NOT include the PANAS dataset and 
 To assess model performance and potential overfitting, we examined the learning curve for model 2 (Figure 12). The learning curve displays training and validation accuracy as the number of training samples increases.
 
 ![Learning Curve Model 2](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
-<br><strong>Figure 12.</strong> Learning Curve for Model 2 (Random Forest, Sensor Data Only).</br>
+<br><strong>Figure 15.</strong> Learning Curve for Model 2 (Random Forest, Sensor Data Only).</br>
 
 
 <img width="606" alt="Image" src="https://github.com/user-attachments/assets/ad3bf41d-97cd-4b4f-b6bc-ab8c8eeddcc5" />
@@ -379,7 +379,7 @@ We created the following Classification Report on the Test set to better underst
 A confusion matrix was also generated to visualize prediction performance across the four classes.
 
 ![Confusion Matrix Model 2](https://github.com/user-attachments/assets/a2e8d622-ba2e-43c1-b721-92eaa1840f2f)
-<br><strong>Figure 13.</strong> Confusion Matrix for Model 2 (Random Forest, Sensor Data Only).</br>
+<br><strong>Figure 16.</strong> Confusion Matrix for Model 2 (Random Forest, Sensor Data Only).</br>
 
 
 
@@ -390,11 +390,11 @@ A Random Forest classifier was trained for multiclass (baseline, stress, meditat
 
 ![Image](https://github.com/user-attachments/assets/c7db3428-2f56-47e4-83b3-0fe27ec3289e)
 
-**Figure 14.** Confusion Matrix for Model 3 (Sensor + Survey Data) (Above)
+**Figure 17.** Confusion Matrix for Model 3 (Sensor + Survey Data) (Above)
 
 ![Image](https://github.com/user-attachments/assets/6664ac42-6b1e-4fda-b9d2-f7e8c04e42ab)
 
-**Figure 15.** Hyperparameter search results for Model 3: explores values of `max_depth`, ,`n_estimators`, and `min_samples_leaf` with corresponding training and test accuracy. (Above)
+**Figure 18.** Hyperparameter search results for Model 3: explores values of `max_depth`, ,`n_estimators`, and `min_samples_leaf` with corresponding training and test accuracy. (Above)
 
 
 ### Model 4: Random Forest Classifier (Sensor Data + Survey Data, Binary)
@@ -407,7 +407,7 @@ A Random Forest classifier was trained for binary stress classification as descr
 Classification Report (Test Set):
 ![Image](https://github.com/user-attachments/assets/53f04f05-9aeb-47e3-9ff0-3ad4cde80e6a)
 
-**Figure 16.** Sensor + Survey Data (Binary Classification) Confusion Matrix (Test Data) 
+**Figure 19.** Sensor + Survey Data (Binary Classification) Confusion Matrix (Test Data) 
 
 ![Image](https://github.com/user-attachments/assets/86aff9e9-0ff9-426c-9372-57faa96eb5ba)
 
@@ -418,14 +418,14 @@ Classification Report (Test Set):
 <img width="445" alt="Image" src="https://github.com/user-attachments/assets/21510629-7024-4971-8ef0-f6862125b85b" />
 
 ![Image](https://github.com/user-attachments/assets/86c735f5-b321-42dc-a19f-21e4a1520b86)
-<br>**Figure 17.** Confusion Matrix for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification). (Above)</br>
+<br>**Figure 20.** Confusion Matrix for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification). (Above)</br>
 
 
 ![Image](https://github.com/user-attachments/assets/254f21d3-3639-49d9-b449-39e257739794)
-<br>**Figure 18.** Top 15 Importances identified by Random Forest Model. (Above)</br>
+<br>**Figure 21.** Top 15 Importances identified by Random Forest Model. (Above)</br>
 
 ![Image](https://github.com/user-attachments/assets/38864e80-b96f-429d-82a3-b91e268374d2)
-<br>**Figure 19.** Classification report for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification).</br>
+<br>**Figure 22.** Classification report for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification).</br>
 
 ### Model 6: XGBoost Classifier (Sensor + Survey + Questionnaire Data)
 
@@ -437,7 +437,7 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 **Classification Report:**  
 <img src="figures/model6_xgboost_classification_report.png" width="500"/>
 
-**Figure 20.** Classification report for XGBoost (Model 6).
+**Figure 23.** Classification report for XGBoost (Model 6).
 
 <img src="figures/xgboost_learning_curve.png" width="500"/>
 
@@ -485,7 +485,7 @@ The confusion matrix for Model 2 highlighted this challenge, as some emotional s
 
 ![Image](https://github.com/user-attachments/assets/835cf4a7-6fcb-4363-b0a9-37c8431d3781)
 
-**Figure 21.** Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
+**Figure 24.** Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
 
 
 **Model 3: Sensor Data + Survey Data**
