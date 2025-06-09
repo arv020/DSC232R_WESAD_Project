@@ -372,14 +372,24 @@ Below we provide detailed results and discussion for each model.
 
 For our second Random Forest Model which does NOT include the PANAS dataset and only the time series data, our results consist of the following: 
 
+To assess model performance and potential overfitting, we examined the learning curve for model 2 (Figure 12). The learning curve displays training and validation accuracy as the number of training samples increases.
+
+![Learning Curve Model 2](https://github.com/user-attachments/assets/cedb2201-1f92-4bcd-8aa8-dc6cbe107886)
+<br><strong>Figure 12.</strong> Learning Curve for Model 2 (Random Forest, Sensor Data Only).</br>
+
+
 <img width="606" alt="Image" src="https://github.com/user-attachments/assets/ad3bf41d-97cd-4b4f-b6bc-ab8c8eeddcc5" />
 
 We created the following Classification Report on the Test set to better understand how our model is predicting each label through calculating Precision, Recall, F1-Score and Support. 
 
-![image](https://github.com/user-attachments/assets/5726275a-cdcb-4177-87c7-e9af36edac2a)
+![Classification Report](https://github.com/user-attachments/assets/ad3bf41d-97cd-4b4f-b6bc-ab8c8eeddcc5)
 
 
-A confusion matrix was also added as part of the results of this project please refer to **Figure 3.**
+A confusion matrix was also generated to visualize prediction performance across the four classes.
+
+![Confusion Matrix Model 2](https://github.com/user-attachments/assets/a2e8d622-ba2e-43c1-b721-92eaa1840f2f)
+<br><strong>Figure 13.</strong> Confusion Matrix for Model 2 (Random Forest, Sensor Data Only).</br>
+
 
 
 ### Model 3: Random Forest Classifier (Multiclass classification: Labels - 1,2,3,4):
@@ -389,11 +399,11 @@ A Random Forest classifier was trained for multiclass (baseline, stress, meditat
 
 ![Image](https://github.com/user-attachments/assets/c7db3428-2f56-47e4-83b3-0fe27ec3289e)
 
-**Figure 12.** Confusion Matrix for Model 3 (Sensor + Survey Data) (Above)
+**Figure 14.** Confusion Matrix for Model 3 (Sensor + Survey Data) (Above)
 
 ![Image](https://github.com/user-attachments/assets/6664ac42-6b1e-4fda-b9d2-f7e8c04e42ab)
 
-**Figure 13.** Hyperparameter search results for Model 3: explores values of `max_depth`, ,`n_estimators`, and `min_samples_leaf` with corresponding training and test accuracy. (Above)
+**Figure 15.** Hyperparameter search results for Model 3: explores values of `max_depth`, ,`n_estimators`, and `min_samples_leaf` with corresponding training and test accuracy. (Above)
 
 
 ### Model 4: Random Forest Classifier (Sensor Data + Survey Data, Binary)
@@ -406,7 +416,7 @@ A Random Forest classifier was trained for binary stress classification as descr
 Classification Report (Test Set):
 ![Image](https://github.com/user-attachments/assets/53f04f05-9aeb-47e3-9ff0-3ad4cde80e6a)
 
-**Figure 14.** Sensor + Survey Data (Binary Classification) Confusion Matrix (Test Data) 
+**Figure 16.** Sensor + Survey Data (Binary Classification) Confusion Matrix (Test Data) 
 
 ![Image](https://github.com/user-attachments/assets/86aff9e9-0ff9-426c-9372-57faa96eb5ba)
 
@@ -417,14 +427,14 @@ Classification Report (Test Set):
 <img width="445" alt="Image" src="https://github.com/user-attachments/assets/21510629-7024-4971-8ef0-f6862125b85b" />
 
 ![Image](https://github.com/user-attachments/assets/86c735f5-b321-42dc-a19f-21e4a1520b86)
-<br>**Figure 15.** Confusion Matrix for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification). (Above)</br>
+<br>**Figure 17.** Confusion Matrix for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification). (Above)</br>
 
 
 ![Image](https://github.com/user-attachments/assets/254f21d3-3639-49d9-b449-39e257739794)
-<br>**Figure 16.** Top 15 Importances identified by Random Forest Model. (Above)</br>
+<br>**Figure 18.** Top 15 Importances identified by Random Forest Model. (Above)</br>
 
 ![Image](https://github.com/user-attachments/assets/38864e80-b96f-429d-82a3-b91e268374d2)
-<br>**Figure 17.** Classification report for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification).</br>
+<br>**Figure 19.** Classification report for Model 5 (Sensor+Survey+PANAS Questionnaires, Multiclass Classification).</br>
 
 ### Model 6: XGBoost Classifier (Sensor + Survey + Questionnaire Data)
 
@@ -436,7 +446,7 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 **Classification Report:**  
 <img src="figures/model6_xgboost_classification_report.png" width="500"/>
 
-**Figure 18.** Classification report for XGBoost (Model 6).
+**Figure 20.** Classification report for XGBoost (Model 6).
 
 <img src="figures/xgboost_learning_curve.png" width="500"/>
 
@@ -453,7 +463,11 @@ Model 6 uses XGBoost, a powerful gradient boosting algorithm, trained on all ava
 
 **Final Model and Summary**
 
-The final model selected was an XGBoost classifier (Model 6) trained on the combined Sensor, Survey, and Questionnaire (PANAS) data for multiclass affective state classification (labels 1-4). Model 6 achieved the strongest test accuracy among all evaluated models (e.g., 0.82), demonstrating robust and balanced performance across all classes. Feature importance analysis revealed that both physiological variables (like recent illness, height, and weight) and behaviorial factors (such as daily sports participation and coffee consumption) play a key role in predicting affective states. These findings highlight the value of integrating sensor data with self-report measures and questionnaires for effective multiclass emotional state detection. Overall, XGBoost provided improved accuracy and interpretability for this task, which is the reason we chose it as the final model. 
+The final model selected was an XGBoost classifier (Model 6) trained on the combined Sensor, Survey, and Questionnaire (PANAS) data for multiclass affective state classification (labels 1-4). Model 6 achieved the strongest test accuracy among all evaluated models (e.g., 0.82), demonstrating robust and balanced performance across all classes. 
+
+**As shown in Figure 2, XGBoost (Model 6) outperformed all Random Forest models in terms of test accuracy.** This improvement may be attributed to XGBoost's ability to capture complex feature interactions and its built-in regularization, which proved advantageous with the diverse and high-dimensional WESAD dataset. 
+
+Feature importance analysis revealed that both physiological variables (like recent illness, height, and weight) and behaviorial factors (such as daily sports participation and coffee consumption) play a key role in predicting affective states. These findings highlight the value of integrating sensor data with self-report measures and questionnaires for effective multiclass emotional state detection. Overall, XGBoost provided improved accuracy and interpretability for this task, which is the reason we chose it as the final model. 
 
 ## <u>**Discussion** </u>
 
@@ -480,7 +494,7 @@ The confusion matrix for Model 2 highlighted this challenge, as some emotional s
 
 ![Image](https://github.com/user-attachments/assets/835cf4a7-6fcb-4363-b0a9-37c8431d3781)
 
-Figure 22: Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
+**Figure 21.** Shows how statistics such as the mean and median and std were the most infuential import features as part of this model. 
 
 
 **Model 3: Sensor Data + Survey Data**
